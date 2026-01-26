@@ -8,18 +8,39 @@ const name = ref('Sign In')
 // These are your containers
 const userEmail = ref("");
 const password = ref("");
+const errorMessage = ref("")
 
+const toastMessage = ref('')
+const toastType = ref('success')
+const showToast = ref(false)
 const router = useRouter();
 
+const triggerToast = (message, type = 'success') => {
+  toastMessage.value = message
+  toastType.value = type
+  showToast.value = true
+
+  setTimeout(() => {
+    showToast.value = false
+  }, 3000)
+}
+
 const handleLogin = () => {
+
+
   if (userEmail.value === 'admin' && password.value === '!!EXH-dR3$') {
     // Redirect to home page
     localStorage.setItem('loggedIn', 'true');
+
+    triggerToast('Welcome to the school 🎉 "success"')
     
     // Use the simple path we defined in the router
-    router.push("/dashboard"); 
+    setTimeout(() => {
+      router.push("/dashboard"); 
+    }, 1200)
+    
   } else {
-    alert("Invalid credentials");
+    triggerToast("Invalid Credentials! ❌ Please check your ID and Password.");
   }
 }
 </script>
@@ -36,6 +57,10 @@ const handleLogin = () => {
     <h1 class="text-[#E5BA73] text-3xl font-500 text-center tracking-widest">
         {{SystemName}}
       </h1>
+      <div v-if="errorMessage" class="bg-red-500/20 border
+       border-red-500 text-red-200 p-3 rounded mb-4 text-xs text-center animate-pulse">
+        {{ errorMessage }}
+      </div>
       <h2 class="text-[#E5BA73] font-500 text-center tracking-widest">
         {{name}}
       </h2>
@@ -89,4 +114,27 @@ const handleLogin = () => {
       </button>
     </div>
   </form>
+
+  <div v-if="showToast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-lg shadow-lg text-sm font-medium
+         transition-all duration-300 ease-out "
+          :class="toastType == 'success'? 'bg-[#181D31] text-white' :'big-red-600 text-white' ">{{ toastMessage }}</div>
 </template>
+
+<style scoped>
+.toast-enter-from {
+  opacity: 0;
+  transform: translate(-50%, 20px);
+}
+.toast-enter-to {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+.toast-leave-from {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+.toast-leave-to {
+  opacity: 0;
+  transform: translate(-50%, 20px);
+}
+</style>
