@@ -15,6 +15,7 @@
 
 @import "tailwindcss";
 
+
 .formx::before {
   content: '';
     top: -50%;
