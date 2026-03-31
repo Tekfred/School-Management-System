@@ -5,6 +5,9 @@ import apple from '@/assets/images/apple white.png'
 import google from '@/assets/images/google3.png'
 import twit from '@/assets/images/twit black.png'
 const SystemName = ref("EduSuite");
+const appleLink = ref("https://account.apple.com/en-us/");
+const googleLink = ref("https://support.google.com/mail/answer/8494?hl=en&co=GENIE.Platform%3DDesktop");
+const twitLink = ref("https://twitter.com/i/flow/login");
 const name = ref("or");
 
 // These are your containers
@@ -54,12 +57,12 @@ const handleLogin = () => {
     <div
       class="absolute bg-[]  rounded-lg z-10 inset-0.5 px-12.5 py-10 flex-col"
     >
-      <h1 class="text-[#181D31] text-4xl font-500 text-center tracking-widest">
+      <h1 class="text-[#181D31] text-lg font-semibold sm:text-2xl text-center tracking-widest">
         {{ SystemName }}
       </h1>
       <div
         v-if="errorMessage"
-        class="bg-red-500/20 border border-red-500 text-red-200 p-3 rounded mb-4 text-xs text-center animate-pulse"
+        class="bg-red-500/20 border t border-red-500 text-red-200 p-3 rounded mb-4 text-xs sm:text-sm md:text-base text-center animate-pulse"
       >
         {{ errorMessage }}
       </div>
@@ -77,11 +80,11 @@ const handleLogin = () => {
         </p>
 
         <span class="flex gap-5 ">
-            <a href="" class="border-none outline-0 bg-[#181D31] py-1.75  w-full rounded-sm font-semibold cursor-pointer flex justify-center ring-2
+            <a :href="appleLink" class="border-none outline-0 bg-[#181D31] py-1.75  w-full rounded-sm font-semibold cursor-pointer flex justify-center ring-2
              ring-[#E5BA73] hover:  animate__animated animate__zoomIn"><img :src="apple" width="30" alt="apple" /></a>
-           <a href="" class="border-none outline-0 bg-[#181D31] py-1.75  w-full rounded-sm font-semibold cursor-pointer flex justify-center ring-2
+           <a :href="googleLink" class="border-none outline-0 bg-[#181D31] py-1.75  w-full rounded-sm font-semibold cursor-pointer flex justify-center ring-2
             ring-[#E5BA73] animate__animated animate__zoomIn"><img :src="google" width="27" alt="google"/></a>
-          <a href="" class="border-none outline-0 bg-[#181D31] py-1.75  w-full rounded-sm font-semibold cursor-pointer flex justify-center ring-2
+          <a :href="twitLink" class="border-none outline-0 bg-[#181D31] py-1.75  w-full rounded-sm font-semibold cursor-pointer flex justify-center ring-2
            ring-[#E5BA73] animate__animated animate__zoomIn"><img :src="twit" width="35" alt="twitter"/></a>
         </span>
 
