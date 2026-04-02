@@ -2,7 +2,6 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-const name = ref('EduSuite')
 const studentno = ref('1,250')
 const teachers = ref('48')
 const fees = ref('$45,000')
@@ -20,20 +19,7 @@ const logout = () => {
 
     
   <div class="flex bg-gray-100 min-h-screen w-full fixed inset-0 overflow-auto ">
-    <aside class="w-52 bg-[#181D31] text-white flex flex-col">
-      <div class="p-6 text-2xl font-bold text-[#E5BA73]">{{name}}</div>
-      
-      <nav class="flex-1 px-4 space-y-2">
-        <a href="#" class="block py-2.5 px-4 rounded bg-[#5e688f] text-white">Dashboard</a>
-        <a href="#" class="block py-2.5 px-4 rounded hover:bg-[#5e688f] transition">Students</a>
-        <a href="#" class="block py-2.5 px-4 rounded hover:bg-[#5e688f] transition">Teachers</a>
-        <a href="#" class="block py-2.5 px-4 rounded hover:bg-[#5e688f] transition">Finance</a>
-      </nav>
-
-      <button @click="logout" class="p-6 text-center hover:text-[#E5BA73] transition">
-        Logout 
-      </button>
-    </aside>
+    
 
     <main class="flex-1 p-8">
       <header class="flex justify-between items-center mb-8">

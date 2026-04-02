@@ -52,17 +52,17 @@ const handleLogin = () => {
 <template>
   <form
     @submit.prevent="handleLogin"
-    class="relative max-w-114 mx-auto h-157 rounded-lg overflow-hidden form bg-[url('/public/picbg.jpg')] bg-cover bg-center"
+    class="relative max-w-100 mx-auto h-157 rounded-lg overflow-hidden form bg-[url('/public/picbg.jpg')] bg-cover bg-center"
   >
     <div
       class="absolute bg-[]  rounded-lg z-10 inset-0.5 px-12.5 py-10 flex-col"
     >
-      <h1 class="text-[#181D31] text-lg font-semibold sm:text-2xl text-center tracking-widest">
+      <h1 class="text-[#181D31] text-md font-semibold sm:text-2xl text-center tracking-widest">
         {{ SystemName }}
       </h1>
       <div
         v-if="errorMessage"
-        class="bg-red-500/20 border t border-red-500 text-red-200 p-3 rounded mb-4 text-xs sm:text-sm md:text-base text-center animate-pulse"
+        class="bg-red-500/20 border border-red-500 text-red-200 p-3 rounded mb-4 text-xs sm:text-sm md:text-base text-center animate-pulse"
       >
         {{ errorMessage }}
       </div>
@@ -71,11 +71,11 @@ const handleLogin = () => {
       </h2> -->
 
       <div>
-        <h1 class="text-[#181D31] text-2xl font-500 text-center tracking-widest font-bold animate__animated animate__zoomIn"
+        <h1 class="text-[#181D31] text-md sm:text-2xl font-500 text-center tracking-widest font-bold animate__animated animate__zoomIn"
         >
           Begin Your Schooling Adventure
         </h1>
-        <p class="text-[#181D31] font-500 text-center tracking-widest text-[12px] relative right-22">
+        <p class="text-[#181D31] font-500 text-center tracking-widest text-xs sm:text-[12px] relative right-22">
           Sign up with Open account
         </p>
 
@@ -97,7 +97,7 @@ const handleLogin = () => {
       <div class="relative w-87 mt-4.75">
         <input
           v-model="userEmail"
-          class="relative w-full p-5 bg-transparent bordor-none outine-none text-[#181D31] text-lg tracking-widest z-10 inputco"
+          class="relative w-75 rounded-xl bg-amber-100 p-3 bordor-none outine-none text-[#181D31] text-lg tracking-widest z-10 inputco"
           required="required"
         />
 
@@ -113,7 +113,7 @@ const handleLogin = () => {
         <input
           v-model="password"
           type="password"
-          class="relative w-full p-5 bg-transparent bordor-none outine-none text-[#181D31] text-lg tracking-wider z-10 inputco"
+          class="relative w-75 rounded-xl bg-amber-100 p-3 bordor-none outine-none text-[#181D31] text-lg tracking-wider z-10 inputco"
           required="required"
         />
         <span
