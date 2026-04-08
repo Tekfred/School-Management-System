@@ -1,59 +1,65 @@
 <script setup>
-import {ref,computed} from 'vue';
+import {ref, } from 'vue';
 import { useRouter } from 'vue-router';
 
-const name = ref('EduSuite')
+const name1 = ref('EduSuite')
 const router = useRouter();
 
-const menuSidebar = ref([
+const menuSidebar = [
     {
         id:1,
         name: 'Dashboard',
-        path:'/dashboard',
+        path:'/app/dashboard',
         icon:''
     },
     {
         id:2,
         name: 'Students',
-        path:'/Students',
+        path:'/app/students',
         icon:''
     },
     {
         id:3,
         name: 'Teachers',
-        path:'/Teachers',
+        path:'/app/teachers',
         icon:''
     },
     {
         id:4,
         name: 'Finance',
-        path:'/Finance',
+        path:'/app/finance',
         icon:''
     },
     {
         id:5,
         name: 'Settings',
-        path:'/Settings',
+        path:'/app/settings',
         icon:''
     }
-])
+]
+
+const logout = () => {
+  localStorage.removeItem('loggedIn');
+  router.push('/login');
+}
+
 </script>
 
 <template>
-    <aside v-for="menu in menuSidebar" :key="menu" class="w-52 bg-[#181D31] text-white flex flex-col">
-      <div class="p-6 text-2xl font-bold text-[#E5BA73]">{{name}}</div>
+    <aside class="w-60 bg-[#181D31] text-white flex flex-col">
+      <div class="p-6 text-2xl font-bold text-[#E5BA73]">{{name1}}</div>
       
       <nav class="flex-1 px-4 space-y-2">
-        <a href="#" class="block py-2.5 px-4 rounded bg-[#5e688f] text-white">Dashboard</a>
-        <a href="#" class="block py-2.5 px-4 rounded hover:bg-[#5e688f] transition">Students</a>
-        <a href="#" class="block py-2.5 px-4 rounded hover:bg-[#5e688f] transition">Teachers</a>
-        <a href="#" class="block py-2.5 px-4 rounded hover:bg-[#5e688f] transition">Finance</a>
+        <router-link v-for="menu in menuSidebar" :key="menu.id" :to="menu.path" class="block py-2.5 px-4 rounded hover:bg-[#5e688f] font-semibold transition" :class="{ 'bg-[#5e688f]': $route.path === menu.path }"
+        > <span>{{ menu.icon }}</span>
+          {{menu.name}}
+
+
+        </router-link>
       </nav>
 
       <button @click="logout" class="p-6 text-center hover:text-[#E5BA73] transition">
         Logout 
       </button>
     </aside>
-
-    <router-Link></router-Link>
 </template>

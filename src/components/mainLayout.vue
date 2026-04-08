@@ -1,17 +1,25 @@
 <script setup>
 import sidebar from '@/components/sidebar.vue';
-import navbar from '/components/navbar.vue';
+import navbar from '@/components/navbar.vue';
+import  {useUiStore} from '@/stores/uistore.js';
+
+const uiStore = useUiStore();
 </script>
 
 <template>
     
 
-    <section>
-        <sidebar />
-        <navbar />
+    <div class="flex h-screen bg-gray-50">
 
+        <sidebar />
         
-        <router-view />
-    </section>
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <navbar />
+            
+            <main class="flex-1 overflow-auto">
+                <router-view />
+            </main>
+        </div>
+    </div>
     
 </template>

@@ -39,9 +39,9 @@ const handleLogin = () => {
 
     triggerToast('Welcome to the school 🎉 "success"');
 
-    // Use the simple path we defined in the router
+    // Redirect to app dashboard
     setTimeout(() => {
-      router.push("/dashboard");
+      router.push("/app/dashboard");
     }, 1200);
   } else {
     triggerToast("Invalid Credentials! ❌ Please check your ID and Password.");

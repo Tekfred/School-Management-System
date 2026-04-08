@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Login.vue'
+import MainLayout from '../components/mainLayout.vue'
 import DashboardView from '../views/Dashboard/DashboardView.vue'
 
 const router = createRouter({
@@ -17,11 +18,36 @@ const router = createRouter({
     },
 
     {
-        path: '/dashboard', 
-        name: 'dashboard',
-        component: DashboardView
+        path: '/app',
+        component: MainLayout,
+        children: [
+          {
+            path: 'dashboard', 
+            name: 'dashboard',
+            component: DashboardView
+          },
+          {
+            path: 'students',
+            name: 'students',
+            component: DashboardView
+          },
+          {
+            path: 'teachers',
+            name: 'teachers',
+            component: DashboardView
+          },
+          {
+            path: 'finance',
+            name: 'finance',
+            component: DashboardView
+          },
+          {
+            path: 'settings',
+            name: 'settings',
+            component: DashboardView
+          }
+        ]
     }
-   
   ]
 })
 
@@ -31,6 +57,8 @@ router.beforeEach((to, from, next) => {
 
   if (to.path !== '/login' && !isLoggedIn) {
     next('/login') // redirect to login if not logged in
+  } else if (to.path === '/' && isLoggedIn) {
+    next('/app/dashboard') // redirect logged-in users to dashboard
   } else {
     next() // allow navigation
   }
