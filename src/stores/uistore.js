@@ -15,4 +15,4 @@ export const useUiStore = defineStore('ui', () => {
     isSidebarOpen,  // The current state (is it open or closed?)
     toggleSidebar   // The function to change the state
   };
-});
+})
