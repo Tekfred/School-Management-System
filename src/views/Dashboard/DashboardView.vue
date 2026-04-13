@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import studentsEnrollment from '@/views/Dashboard/Components/studentsEnrollment.vue';
+import quickAction from '@/views/Dashboard/Components/quickAction.vue';
 
 
 
@@ -70,7 +71,6 @@ const logout = () => {
 
 <template>
   <div class=" bg-gray-50">
-   
 
     <!-- Main Content -->
     <div class="p-8">
@@ -89,6 +89,20 @@ const logout = () => {
       </div>
     </div>
 
-    <studentsEnrollment />
+    <!-- Enrollment and Quick Actions Row -->
+    <div class="p-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Students enrollment: wider (spans 2/3) -->
+        <div class="lg:col-span-2">
+          <studentsEnrollment />
+        </div>
+
+        <!-- Quick Actions: narrower (spans 1/3) -->
+        <div class="lg:col-span-1">
+          <quickAction />
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
