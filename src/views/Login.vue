@@ -33,7 +33,7 @@ const triggerToast = (message, type = "success") => {
 };
 
 const handleLogin = () => {
-  if (userEmail.value === "admins" && password.value === "!!EXh-dR3$") {
+  if (userEmail.value === "admins" && password.value === "!!qwertyk3y") {
     // Redirect to home page
     localStorage.setItem("loggedIn", "true");
 
@@ -52,7 +52,7 @@ const handleLogin = () => {
 <template>
   <form
     @submit.prevent="handleLogin"
-    class="relative max-w-100 mx-auto h-157 rounded-lg overflow-hidden form bg-[url('/public/picbg.jpg')] bg-cover bg-center"
+    class="relative max-w-100 mx-auto my-12 h-157 rounded-lg overflow-hidden form bg-[url('/public/picbg.jpg')] bg-cover bg-center"
   >
     <div
       class="absolute bg-[]  rounded-lg z-10 inset-0.5 px-12.5 py-10 flex-col"

@@ -2,6 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Login.vue'
 import MainLayout from '../components/mainLayout.vue'
 import DashboardView from '../views/Dashboard/DashboardView.vue'
+import studentsview  from '../views/Students/studentsview.vue'
+import teachersview from '../views/Teachers/teachersview.vue'
+import Financialview from '../views/Finance/Financialview.vue'
+import Settingsview from '../views/Settings/Settingsview.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,22 +33,22 @@ const router = createRouter({
           {
             path: 'students',
             name: 'students',
-            component: DashboardView
+            component: studentsview
           },
           {
             path: 'teachers',
             name: 'teachers',
-            component: DashboardView
+            component: teachersview
           },
           {
             path: 'finance',
             name: 'finance',
-            component: DashboardView
+            component: Financialview
           },
           {
             path: 'settings',
             name: 'settings',
-            component: DashboardView
+            component: Settingsview
           }
         ]
     }

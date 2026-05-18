@@ -37,7 +37,7 @@ const getBarColor = (index) => {
 </script>
 
 <template>
-  <div class="bg-white rounded-lg p-6 shadow-sm animate-fade-in" style="animation-delay: 200ms; animation-duration: 0.5s;">
+  <div class="bg-white rounded-lg p-6  shadow-sm animate-fade-in" style="animation-delay: 200ms; animation-duration: 0.5s;">
     <!-- Header with title and dropdown -->
     <div class="flex items-center justify-between mb-6">
       <div>
@@ -55,7 +55,7 @@ const getBarColor = (index) => {
     </div>
 
     <!-- Chart container with bar chart -->
-    <div class="flex items-end justify-around h-64 gap-2 bg-gray-50 p-4 rounded-lg border border-gray-200">
+    <div class="flex items-end justify-around h-50 gap-2 bg-gray-50 p-4 rounded-lg border border-gray-200">
       <!-- Individual bars -->
       <div
         v-for="(data, index) in enrollmentData"

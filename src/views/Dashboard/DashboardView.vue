@@ -74,8 +74,9 @@ const logout = () => {
 
     <!-- Main Content -->
     <div class="p-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div v-for="active in activeStatus" :key="active.id" :class="`bg-white p-3 space-y-2 rounded-lg shadow-sm border-l-4 ${active.borderColor}`">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 ">
+        <div v-for="active in activeStatus" :key="active.id" :class="`bg-white p-3 space-y-2 rounded-lg shadow-sm border-l-4 ${active.borderColor} animate-fade-in`" 
+        :style="`animation-delay: ${(active.id - 1) * 0.15}s`">
           <div class="flex items-center justify-between">
             <div class="text-gray-500 text-sm font-semibold">{{ active.name }}</div>
             <span class="material-symbols-outlined rounded-lg p-3 text-2xl" :style="getIconStyle(active.bgcolor, active.borderColor)">{{ active.icon }}</span>
@@ -106,3 +107,21 @@ const logout = () => {
 
   </div>
 </template>
+
+<style scoped>
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0; /* ✅ cards start invisible until their delay fires */
+}
+</style>

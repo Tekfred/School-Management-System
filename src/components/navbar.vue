@@ -69,12 +69,10 @@ const closeDropdown = () => {
                         <span class="material-symbols-outlined text-lg">settings</span>
                         <span>Settings</span>
                       </button>
-
-                      <!-- Divider -->
-                      <hr class="my-2">
+                      
 
                       <!-- Logout item -->
-                      <button @click="handleLogout" class="w-full text-left px-4 py-2 hover:bg-red-50 text-red-600 flex items-center gap-2 transition font-semibold">
+                      <button @click="handleLogout" class="w-full text-left px-4 py-5 hover:bg-red-50 text-red-600 flex items-center gap-2 transition font-semibold">
                         <span class="material-symbols-outlined text-lg">logout</span>
                         <span>Logout</span>
                       </button>
