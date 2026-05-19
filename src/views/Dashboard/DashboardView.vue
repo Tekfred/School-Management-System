@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 import studentsEnrollment from '@/views/Dashboard/Components/studentsEnrollment.vue';
 import quickAction from '@/views/Dashboard/Components/quickAction.vue';
 import recentActivity from './Components/recentActivity.vue';
+import UpcomingEvents from './Components/UpcomingEvents.vue';
 
 
 
@@ -107,8 +108,10 @@ const logout = () => {
     </div>
 
     <div>
-      <div class="p-8">
+      <div class="p-8 grid grid-cols-1 lg:grid-cols-2 gap-2">
         <recentActivity />
+
+        <UpcomingEvents />
       </div>
     </div>
 
