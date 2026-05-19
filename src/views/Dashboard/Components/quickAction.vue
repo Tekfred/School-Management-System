@@ -22,9 +22,9 @@ function handleAction(action) {
 </script>
 
 <template>
-  <div class="bg-white p-6 rounded-lg shadow-sm " >
-    <div class="mb-4">
-      <h3 class="text-lg font-semibold text-gray-800">Quick Actions</h3>
+  <div class="bg-white dark:bg-[#1e293b] p-8 rounded-lg shadow-sm" >
+    <div class="">
+      <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Quick Actions</h3>
     </div>
 
     <!-- Grid container -->
@@ -35,7 +35,7 @@ function handleAction(action) {
         @click="handleAction(action)"
         role="button"
         tabindex="0"
-        class="rounded-lg p-5 text-center space-y-2 cursor-pointer transition-shadow hover:shadow-md"
+        class="rounded-lg p-5 text-center space-y-2 cursor-pointer transition-shadow hover:shadow-md dark:ring-1 dark:ring-white/10"
         :class="['animate-pop-in', action.bgColor ? action.bgColor : '']"
         :style="{
           ...(action.bgHex ? { backgroundColor: action.bgHex } : {}),
@@ -53,7 +53,7 @@ function handleAction(action) {
         </div>
 
         <div :style="action.textHex ? { color: action.textHex } : null" class="font-semibold">{{ action.name }}</div>
-        <div class="text-xs text-gray-500">{{ action.description }}</div>
+        <div class="text-xs text-gray-500 dark:text-gray-300">{{ action.description }}</div>
       </div>
     </div>
   </div>

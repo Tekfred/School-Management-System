@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import studentsEnrollment from '@/views/Dashboard/Components/studentsEnrollment.vue';
 import quickAction from '@/views/Dashboard/Components/quickAction.vue';
+import recentActivity from './Components/recentActivity.vue';
 
 
 
@@ -70,21 +71,21 @@ const logout = () => {
 </script>
 
 <template>
-  <div class=" bg-gray-50">
+  <div class="bg-gray-50 dark:bg-[#0f172a] dark:text-gray-100">
 
     <!-- Main Content -->
     <div class="p-8">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6 ">
-        <div v-for="active in activeStatus" :key="active.id" :class="`bg-white p-3 space-y-2 rounded-lg shadow-sm border-l-4 ${active.borderColor} animate-fade-in`" 
+        <div v-for="active in activeStatus" :key="active.id" :class="`bg-white dark:bg-[#1e293b] p-3 space-y-2 rounded-lg shadow-sm border-l-4 ${active.borderColor} animate-fade-in`" 
         :style="`animation-delay: ${(active.id - 1) * 0.15}s`">
           <div class="flex items-center justify-between">
-            <div class="text-gray-500 text-sm font-semibold">{{ active.name }}</div>
+            <div class="text-gray-500 dark:text-gray-300 text-sm font-semibold">{{ active.name }}</div>
             <span class="material-symbols-outlined rounded-lg p-3 text-2xl" :style="getIconStyle(active.bgcolor, active.borderColor)">{{ active.icon }}</span>
           </div>
           
-          <div class="text-2xl font-bold">{{ active.value }}</div>
+          <div class="text-2xl font-bold dark:text-white">{{ active.value }}</div>
 
-          <div class="text-gray-500 text-sm font-semibold">{{ active.message }}</div>
+          <div class="text-gray-500 dark:text-gray-400 text-sm font-semibold">{{ active.message }}</div>
         </div>
 
       </div>
@@ -102,6 +103,12 @@ const logout = () => {
         <div class="lg:col-span-1">
           <quickAction />
         </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="p-8">
+        <recentActivity />
       </div>
     </div>
 
