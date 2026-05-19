@@ -3,11 +3,13 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import image from '@/assets/images/profile_img_3.png';
 import { useUiStore } from '../stores/uistore';
+import { useThemeStore } from '../stores/themeS';
 
 // Step 1: Create the state - boolean to toggle dropdown visibility
 const profileDropdownOpen = ref(false);
 
 const uiStore = useUiStore();
+const themeStore = useThemeStore();
 const router = useRouter();
 
 // Step 2: Create function to toggle the dropdown
@@ -37,11 +39,31 @@ const closeDropdown = () => {
     </div>
         <div class="px-8 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-semibold text-gray-800 ">School Overview
-                <input type="search" class="w-100 bg-[#f6f6f8] border-none rounded-xl py-2 md:py-3 px-4 md:px-8 lg:px-12 focus:ring-2 focus:ring-purple-500 transition-all text-xs md:text-sm" placeholder="Search Students, Teachers....">
+                <input type="search" class="w-100 bg-[#f6f6f8] border-none rounded-xl
+                 py-2 md:py-3 px-4 md:px-8 lg:px-12 focus:ring-2 focus:ring-purple-500 transition-all 
+                 text-xs md:text-sm" placeholder="Search Students, Teachers....">
             </h1>
 
             <div class="flex gap-3 items-center">
-                <span class="material-symbols-outlined items-center cursor-pointer transform translate-y-2 -translate-x-3 text-[#65758b] ">notifications</span>
+
+              <button
+                type="button"
+                @click="themeStore.toggleTheme"
+                class="flex items-center gap-1 rounded-full bg-gray-100 p-1 text-[#65758b] transition hover:bg-gray-200"
+                :aria-label="themeStore.isDark ? 'Switch to light mode' : 'Switch to dark mode'"
+              >
+                <span
+                  class="material-symbols-outlined rounded-full p-1 text-xl transition"
+                  :class="themeStore.isDark ? 'text-gray-400' : 'bg-white text-amber-500 shadow-sm'"
+                >light_mode</span>
+                <span
+                  class="material-symbols-outlined rounded-full p-1 text-xl transition"
+                  :class="themeStore.isDark ? 'bg-[#181D31] text-white shadow-sm' : 'text-gray-400'"
+                >dark_mode</span>
+              </button  >
+
+
+                <span class="material-symbols-outlined items-center cursor-pointer text-[#65758b] ">notifications</span>
                 
                 <!-- Step 5: Create wrapper div for profile button and dropdown (relative positioning) -->
                 <div class="relative">

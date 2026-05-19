@@ -37,17 +37,17 @@ const getBarColor = (index) => {
 </script>
 
 <template>
-  <div class="bg-white rounded-lg p-6  shadow-sm animate-fade-in" style="animation-delay: 200ms; animation-duration: 0.5s;">
+  <div class="bg-white dark:bg-[#1e293b] rounded-lg p-6 shadow-sm animate-fade-in" style="animation-delay: 200ms; animation-duration: 0.5s;">
     <!-- Header with title and dropdown -->
     <div class="flex items-center justify-between mb-6">
       <div>
-        <h3 class="text-lg font-semibold text-gray-900">Student Enrollment</h3>
-        <p class="text-sm text-gray-500">Monthly enrollment trends</p>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Student Enrollment</h3>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Monthly enrollment trends</p>
       </div>
       <select
         @change="handlePeriodChange"
         v-model="selectedPeriod"
-        class="px-3 py-1.5 text-sm bg-gray-100 rounded-lg border-none text-gray-900 cursor-pointer hover:bg-gray-200 transition"
+        class="px-3 py-1.5 text-sm bg-gray-100 dark:bg-[#334155] rounded-lg border-none text-gray-900 dark:text-gray-100 cursor-pointer hover:bg-gray-200 dark:hover:bg-[#475569] transition"
       >
         <option>Last 6 months</option>
         <option>Last year</option>
@@ -55,7 +55,7 @@ const getBarColor = (index) => {
     </div>
 
     <!-- Chart container with bar chart -->
-    <div class="flex items-end justify-around h-50 gap-2 bg-gray-50 p-4 rounded-lg border border-gray-200">
+    <div class="flex items-end justify-around h-50 gap-2 bg-gray-50 dark:bg-[#0f172a] p-4 rounded-lg border border-gray-200 dark:border-[#334155]">
       <!-- Individual bars -->
       <div
         v-for="(data, index) in enrollmentData"
@@ -72,28 +72,28 @@ const getBarColor = (index) => {
           }"
         >
           <!-- Tooltip on hover -->
-          <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-white px-2 py-1 rounded shadow-lg border border-gray-200 text-xs font-semibold text-gray-900 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+          <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-white dark:bg-[#334155] px-2 py-1 rounded shadow-lg border border-gray-200 dark:border-[#475569] text-xs font-semibold text-gray-900 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
             {{ data.students }} students
           </div>
         </div>
 
         <!-- Label -->
-        <div class="text-xs font-medium text-gray-600">{{ data.month }}</div>
+        <div class="text-xs font-medium text-gray-600 dark:text-gray-300">{{ data.month }}</div>
       </div>
     </div>
 
     <!-- Statistics row -->
     <div class="mt-6 grid grid-cols-3 gap-4">
-      <div class="bg-blue-50 p-3 rounded-lg">
-        <p class="text-xs text-gray-500">Total Growth</p>
+      <div class="bg-blue-50 dark:bg-blue-950/40 p-3 rounded-lg">
+        <p class="text-xs text-gray-500 dark:text-gray-400">Total Growth</p>
         <p class="text-lg font-bold text-blue-600">{{ enrollmentData[enrollmentData.length - 1].students - enrollmentData[0].students }} students</p>
       </div>
-      <div class="bg-blue-50 p-3 rounded-lg">
-        <p class="text-xs text-gray-500">Average</p>
+      <div class="bg-blue-50 dark:bg-blue-950/40 p-3 rounded-lg">
+        <p class="text-xs text-gray-500 dark:text-gray-400">Average</p>
         <p class="text-lg font-bold text-blue-600">{{ Math.round(enrollmentData.reduce((a, b) => a + b.students, 0) / enrollmentData.length) }}</p>
       </div>
-      <div class="bg-blue-50 p-3 rounded-lg">
-        <p class="text-xs text-gray-500">Growth Rate</p>
+      <div class="bg-blue-50 dark:bg-blue-950/40 p-3 rounded-lg">
+        <p class="text-xs text-gray-500 dark:text-gray-400">Growth Rate</p>
         <p class="text-lg font-bold text-blue-600">{{ Math.round(((enrollmentData[enrollmentData.length - 1].students - enrollmentData[0].students) / enrollmentData[0].students) * 100) }}%</p>
       </div>
     </div>
