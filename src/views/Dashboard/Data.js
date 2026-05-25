@@ -1,0 +1,177 @@
+export const activeStatus = [
+  {
+    id: 1,
+    name: 'Total Students',
+    value: '1,250',
+    borderColor: 'border-blue-500',
+    message: '+12 from last month',
+    icon: 'groups',
+    bgcolor: '#ebf2fe',
+  },
+  {
+    id: 2,
+    name: 'Active Teachers',
+    value: '48',
+    borderColor: 'border-green-500',
+    message: '+4 from last month',
+    icon: 'school',
+    bgcolor: '#e7f7f2',
+  },
+  {
+    id: 3,
+    name: 'Fees Collected',
+    value: '$45,000',
+    borderColor: 'border-amber-400',
+    message: '+8 from last month',
+    icon: 'attach_money',
+    bgcolor: '#fdf5e6',
+  },
+  {
+    id: 4,
+    name: 'Active Courses',
+    value: '32',
+    borderColor: 'border-red-500',
+    message: '+2 from last month',
+    icon: 'menu_book',
+    bgcolor: '#fdebee',
+  },
+]
+
+export const enrollmentData = [
+  { month: 'Jan', students: 1100, percent: 88 },
+  { month: 'Feb', students: 1150, percent: 92 },
+  { month: 'Mar', students: 1180, percent: 94 },
+  { month: 'Apr', students: 1200, percent: 96 },
+  { month: 'May', students: 1220, percent: 97 },
+  { month: 'Jun', students: 1250, percent: 100 },
+]
+
+export const quickActions = [
+  {
+    id: 1,
+    name: 'Add Student',
+    description: 'Register new student',
+    icon: 'person_add',
+    bgColor: 'bg-blue-50',
+    textColor: 'text-blue-600',
+    route: '/students/add',
+  },
+  {
+    id: 2,
+    name: 'Generate Report',
+    description: 'Create academic report',
+    icon: 'description',
+    bgHex: '#ecfdf5',
+    textHex: '#059669',
+    route: '/reports',
+  },
+  {
+    id: 3,
+    name: 'Record Payment',
+    description: 'Process fee payment',
+    icon: 'credit_card',
+    bgColor: 'bg-amber-50',
+    textColor: 'text-amber-600',
+    route: '/payments',
+  },
+  {
+    id: 4,
+    name: 'Send Notice',
+    description: 'Broadcast message',
+    icon: 'chat_bubble',
+    bgHex: '#fff1f2',
+    textHex: '#db2777',
+    route: '/notices',
+  },
+]
+
+export const recentActivities = [
+  {
+    id: 1,
+    iconText: 'JS',
+    BoldText: 'John Smith',
+    messages: ' enrolled in',
+    BoldText2: 'Computer Science 101',
+    TimeRanges: '2 hours ago',
+    border: 'border-blue-500',
+  },
+  {
+    id: 2,
+    iconText: 'SJ',
+    BoldText: 'Sarah Johnson',
+    messages: ' submitted payment for ',
+    BoldText2: 'Term 2 Fees',
+    TimeRanges: '4 hours ago',
+    border: 'border-green-500',
+  },
+  {
+    id: 3,
+    iconText: 'MB',
+    BoldText: 'Michael Brown',
+    messages: ' completed course ',
+    BoldText2: 'Mathematics Advanced',
+    TimeRanges: '2 hours ago',
+    border: 'border-amber-400',
+  },
+  {
+    id: 4,
+    iconText: 'JW',
+    BoldText: 'James Wilson',
+    messages: ' registered for ',
+    BoldText2: 'Science Fair 2024',
+    TimeRanges: '8 hours ago',
+    border: 'border-red-400',
+  },
+  {
+    id: 5,
+    iconText: 'ED',
+    BoldText: 'Emily Davis',
+    messages: ' updated profile',
+    BoldText2: 'Profile',
+    TimeRanges: '2 hours ago',
+    border: 'border-gray-300',
+  },
+]
+
+export const upcomingEvents = [
+  {
+    id: 1,
+    Events: 'Parent-Teacher Conference',
+    Timeline: 'Feb 15, 2024',
+    border: 'border-blue-500',
+    dot: 'bg-blue-100',
+    Time: '10:00 AM',
+  },
+  {
+    id: 2,
+    Events: 'Annual Science Fair',
+    Timeline: 'Feb 20, 2024',
+    border: 'border-green-500',
+    dot: 'bg-green-100',
+    Time: '9:00 AM',
+  },
+  {
+    id: 3,
+    Events: 'Mid-term Examinations',
+    Timeline: 'Feb 25, 2024',
+    border: 'border-red-500',
+    dot: 'bg-red-100',
+    Time: '8:00 AM',
+  },
+  {
+    id: 4,
+    Events: 'Sports Day',
+    Timeline: 'Mar 1, 2024',
+    border: 'border-amber-500',
+    dot: 'bg-amber-100',
+    Time: '7:30 AM',
+  },
+]
+
+export default {
+  activeStatus,
+  enrollmentData,
+  quickActions,
+  recentActivities,
+  upcomingEvents,
+}
