@@ -1,41 +1,10 @@
 <script setup>
-import { ref } from 'vue';
-
-const events = ref([
-    {
-        id: 1,
-        Events: 'Parent-Teacher Conference',
-        Timeline: 'Feb 15, 2024',
-        border: 'border-blue-500',
-        dot: 'bg-blue-100',
-        Time: '10:00 AM'
-    },
-    {
-        id: 2,
-        Events: 'Annual Science Fair',
-        Timeline: 'Feb 20, 2024',
-        border: 'border-green-500',
-        dot: 'bg-green-100',
-        Time: '9:00 AM'
-    },
-    {
-        id: 3,
-        Events: 'Mid-term Examinations',
-        Timeline: 'Feb 25, 2024',
-        border: 'border-red-500',
-        dot: 'bg-red-100',
-        Time: '8:00 AM'
-    },
-    {
-        id: 4,
-        Events: 'Sports Day',
-        Timeline: 'Mar 1, 2024',
-        border: 'border-amber-500',
-        dot: 'bg-amber-100',
-        Time: '7:30 AM'
-    }
-]);
-
+defineProps({
+  events: {
+    type: Array,
+    default: () => [],
+  },
+})
 </script>
 
 <template>

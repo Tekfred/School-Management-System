@@ -1,55 +1,16 @@
 <script setup>
-import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import studentsEnrollment from '@/views/Dashboard/Components/studentsEnrollment.vue';
 import quickAction from '@/views/Dashboard/Components/quickAction.vue';
 import recentActivity from './Components/recentActivity.vue';
 import UpcomingEvents from './Components/UpcomingEvents.vue';
-
-
-
-const activeStatus = [
-  {
-    id: 1,
-    name: 'Total Students',
-    value: '1,250',
-    borderColor: 'border-blue-500',
-    message: "+12 from last month",
-    icon: 'groups'
-   , bgcolor: '#ebf2fe'
-  },
-  {
-    id: 2,
-    name: 'Active Teachers',
-    value: '48',
-    borderColor: 'border-green-500',
-    message: "+4 from last month",
-    icon: 'school'
-   , bgcolor: '#e7f7f2'
-  },
-  {
-    id: 3,
-    name: 'Fees Collected',
-    value: '$45,000',
-    borderColor: 'border-amber-400',
-    message: "+8 from last month",
-    icon: 'attach_money',
-    bgcolor: '#fdf5e6'
-  },
-  {
-    id: 4,
-    name: 'Active Courses',
-    value: '32',
-    borderColor: 'border-red-500',
-    message: "+2 from last month",
-    icon: 'menu_book'
-  ,  bgcolor: '#fdebee'
-  }
-]
-
-const getStatusClass = (borderColor) => {
-  return `border-l-4 ${borderColor}`
-}
+import {
+  activeStatus,
+  enrollmentData,
+  quickActions,
+  recentActivities,
+  upcomingEvents,
+} from './Data';
 
 const getIconStyle = (bgcolor, borderColor) => {
   return {
@@ -57,12 +18,6 @@ const getIconStyle = (bgcolor, borderColor) => {
     color: borderColor.includes('amber') ? '#b8860b' : borderColor.split('-')[1]
   }
 }
-// const studentno = ref('1,250')
-// const teachers = ref('48')
-// const fees = ref('$45,000')
-// const courses = ref('32')
-
-
 const router = useRouter()
 
 const logout = () => {
@@ -97,21 +52,21 @@ const logout = () => {
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <!-- Students enrollment: wider (spans 2/3) -->
         <div class="lg:col-span-2">
-          <studentsEnrollment />
+          <studentsEnrollment :enrollment-data="enrollmentData" />
         </div>
 
         <!-- Quick Actions: narrower (spans 1/3) -->
         <div class="lg:col-span-1">
-          <quickAction />
+          <quickAction :actions="quickActions" />
         </div>
       </div>
     </div>
 
     <div>
       <div class="p-8 grid grid-cols-1 lg:grid-cols-2 gap-2">
-        <recentActivity />
+        <recentActivity :activities="recentActivities" />
 
-        <UpcomingEvents />
+        <UpcomingEvents :events="upcomingEvents" />
       </div>
     </div>
 

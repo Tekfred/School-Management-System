@@ -2,13 +2,12 @@
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
-const actions = [
-  { id: 1, name: 'Add Student', description: 'Register new student', icon: 'person_add', bgColor: 'bg-blue-50', textColor: 'text-blue-600', route: '/students/add' },
-
-  { id: 2, name: 'Generate Report', description: 'Create academic report', icon: 'description', bgHex: '#ecfdf5', textHex: '#059669', route: '/reports' },
-  { id: 3, name: 'Record Payment', description: 'Process fee payment', icon: 'credit_card', bgColor: 'bg-amber-50', textColor: 'text-amber-600', route: '/payments' },
-  { id: 4, name: 'Send Notice', description: 'Broadcast message', icon: 'chat_bubble', bgHex: '#fff1f2', textHex: '#db2777', route: '/notices' }
-]
+defineProps({
+  actions: {
+    type: Array,
+    default: () => [],
+  },
+})
 
 function handleAction(action) {
   if (action.route) {
