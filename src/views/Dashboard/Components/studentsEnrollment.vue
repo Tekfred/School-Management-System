@@ -53,7 +53,7 @@ const getBarColor = (index) => {
 </script>
 
 <template>
-  <div class="bg-white dark:bg-[#1e293b] rounded-lg p-6 shadow-sm animate-fade-in" style="animation-delay: 200ms; animation-duration: 0.5s;">
+  <div class="bg-white dark:bg-[#1e293b] rounded-lg p-14 shadow-sm animate-fade-in" style="animation-delay: 200ms; animation-duration: 0.5s;">
     <!-- Header with title and dropdown -->
     <div class="flex items-center justify-between mb-6">
       <div>
