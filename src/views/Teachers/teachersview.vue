@@ -1,13 +1,14 @@
+<template>
+  <div class="teachers-view">
+    <h1>Teachers</h1>
+    <!-- Placeholder teachers view created to match import in router -->
+  </div>
+</template>
+
 <script setup>
-import { useRoute } from 'vue-router';
-import { ref } from 'vue';
+// lightweight placeholder component
 </script>
 
-<template>
-
-    <div class="p-6">
-        <h1 class="text-2xl font-bold mb-4">teachers View</h1>
-        <p class="text-gray-600">This is the teachers view page. You can manage teacher information here.</p>
-    </div>
-
-</template>
+<style scoped>
+.teachers-view { padding: 1rem; }
+</style>
