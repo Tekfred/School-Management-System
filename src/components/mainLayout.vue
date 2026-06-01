@@ -9,7 +9,7 @@ const uiStore = useUiStore();
 <template>
     
 
-    <div class="flex h-screen bg-gray-50">
+    <div class="flex h-screen bg-[#f7f8fc] dark:bg-[#0b1120]">
 
         <sidebar />
         
