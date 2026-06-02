@@ -56,9 +56,9 @@ function handleAction(action) {
           </div>
           <div class="min-w-0">
             <div :style="action.textHex ? { color: action.textHex } : null" class="font-bold">{{ action.name }}</div>
-            <div class="text-xs font-medium text-slate-500 dark:text-slate-600">{{ action.description }}</div>
+            <div class="text-xs font-semibold text-[#181D31]">{{ action.description }}</div>
           </div>
-          <span class="material-symbols-outlined ml-auto text-lg opacity-0 transition group-hover:opacity-60">arrow_forward</span>
+          <span class="material-symbols-outlined ml-auto text-lg text-[#181D31] opacity-0 transition group-hover:opacity-60">arrow_forward</span>
         </div>
       </div>
     </div>
@@ -82,4 +82,5 @@ function handleAction(action) {
   animation: popIn 0.45s ease-out forwards;
   opacity: 0;
 }
+
 </style>

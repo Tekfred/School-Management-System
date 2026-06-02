@@ -1,28 +1,70 @@
 <script setup>
-import { ref } from "vue";
-import { useRouter } from "vue-router";
-import apple from '@/assets/images/apple white.png'
-import google from '@/assets/images/google3.png'
-import twit from '@/assets/images/twit black.png'
-const SystemName = ref("EduSuite");
-const appleLink = ref("https://account.apple.com/en-us/");
-const googleLink = ref("https://support.google.com/mail/answer/8494?hl=en&co=GENIE.Platform%3DDesktop");
-const twitLink = ref("https://twitter.com/i/flow/login");
-const name = ref("or");
+import { onMounted, ref } from 'vue';
+import { useRouter } from 'vue-router';
+import apple from '@/assets/images/apple white.png';
+import google from '@/assets/images/google3.png';
+import twit from '@/assets/images/twit black.png';
 
-// These are your containers
-const userEmail = ref("");
-const password = ref("");
-const errorMessage = ref("");
+const SystemName = ref('EduSuite');
+const appleLink = ref('https://account.apple.com/en-us/');
+const googleLink = ref('https://support.google.com/mail/answer/8494?hl=en&co=GENIE.Platform%3DDesktop');
+const twitLink = ref('https://twitter.com/i/flow/login');
 
-const toastMessage = ref("");
-const toastType = ref("success");
+const userEmail = ref('');
+const password = ref('');
+
+const toastMessage = ref('');
+const toastType = ref('success');
 const showToast = ref(false);
 
+const heroStats = [
+  { value: '1,250', label: 'Students' },
+  { value: '48', label: 'Teachers' },
+  { value: '32', label: 'Courses' },
+];
 
 const router = useRouter();
 
-const triggerToast = (message, type = "success") => {
+onMounted(() => {
+  const gsap = window.gsap;
+
+  if (!gsap) return;
+
+  gsap.from('.logo', {
+    y: -50,
+    opacity: 0,
+    duration: 1,
+    ease: 'power3.out',
+  });
+
+  gsap.from('.login-card', {
+    x: 100,
+    opacity: 0,
+    duration: 1.2,
+    ease: 'power3.out',
+    delay: 0.15,
+  });
+
+  gsap.from('.hero-copy', {
+    y: 40,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.12,
+    ease: 'power3.out',
+    delay: 0.25,
+  });
+
+  gsap.from('.stat-card', {
+    y: 24,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.1,
+    ease: 'power3.out',
+    delay: 0.55,
+  });
+});
+
+const triggerToast = (message, type = 'success') => {
   toastMessage.value = message;
   toastType.value = type;
   showToast.value = true;
@@ -33,147 +75,180 @@ const triggerToast = (message, type = "success") => {
 };
 
 const handleLogin = () => {
-  if (userEmail.value === "admins" && password.value === "!!qwertyk3y") {
-    // Redirect to home page
-    localStorage.setItem("loggedIn", "true");
+  if (userEmail.value === 'admins' && password.value === '!!qwertyk3y') {
+    localStorage.setItem('loggedIn', 'true');
+    triggerToast('Welcome to EduSuite');
 
-    triggerToast('Welcome to the school 🎉 "success"');
-
-    // Redirect to app dashboard
     setTimeout(() => {
-      router.push("/app/dashboard");
-    }, 1200);
+      router.push('/app/dashboard');
+    }, 900);
   } else {
-    triggerToast("Invalid Credentials! ❌ Please check your ID and Password.");
+    triggerToast('Invalid credentials. Please check your ID and password.', 'error');
   }
 };
 </script>
 
 <template>
-  <form
-    @submit.prevent="handleLogin"
-    class="relative max-w-100 mx-auto my-12 h-157 rounded-lg overflow-hidden form bg-[url('/public/picbg.jpg')] bg-cover bg-center"
-  >
-    <div
-      class="absolute bg-[]  rounded-lg z-10 inset-0.5 px-12.5 py-10 flex-col"
-    >
-      <h1 class="text-[#181D31] text-md font-semibold sm:text-2xl text-center tracking-widest">
-        {{ SystemName }}
-      </h1>
-      <div
-        v-if="errorMessage"
-        class="bg-red-500/20 border border-red-500 text-red-200 p-3 rounded mb-4 text-xs sm:text-sm md:text-base text-center animate-pulse"
-      >
-        {{ errorMessage }}
-      </div>
-      <!-- <h2 class="text-[#E5BA73] font-500 text-center tracking-widest">
-        {{ name }}
-      </h2> -->
+  <main class="min-h-screen bg-[var(--background)] text-[var(--text)]">
+    <div class="grid min-h-screen lg:grid-cols-[minmax(0,1.08fr)_minmax(420px,0.92fr)]">
+      <section class="relative hidden overflow-hidden lg:block">
+        <img src="/bg-uni1.jpg" alt="Sunlit university library" class="absolute inset-0 h-full w-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#181D31]/65 via-[#181D31]/25 to-[#E5BA73]/20"></div>
+        <div class="particles" aria-hidden="true">
+          <span v-for="item in 14" :key="item" :style="{ '--delay': `${item * 0.35}s`, '--left': `${8 + item * 6}%` }"></span>
+        </div>
 
-      <div>
-        <h1 class="text-[#181D31] text-md sm:text-2xl font-500 text-center tracking-widest font-bold animate__animated animate__zoomIn"
-        >
-          Begin Your Schooling Adventure
-        </h1>
-        <p class="text-[#181D31] font-500 text-center tracking-widest text-xs sm:text-[12px] relative right-22">
-          Sign up with Open account
-        </p>
+        <div class="relative z-10 flex min-h-screen flex-col justify-between p-10 xl:p-14">
+          <div class="logo flex items-center gap-4">
+            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-[var(--gold)] text-[var(--navy)] shadow-xl">
+              <span class="material-symbols-outlined">auto_stories</span>
+            </div>
+            <div>
+              <p class="display-font text-4xl font-bold text-white">{{ SystemName }}</p>
+              <p class="text-xs font-bold uppercase tracking-[0.24em] text-[#F7E5C8]">Campus Experience</p>
+            </div>
+          </div>
 
-        <span class="flex gap-5 ">
-            <a :href="appleLink" class="border-none outline-0 bg-[#181D31] py-1.75  w-full rounded-sm font-semibold cursor-pointer flex justify-center ring-2
-             ring-[#E5BA73] hover:  animate__animated animate__zoomIn"><img :src="apple" width="30" alt="apple" /></a>
-           <a :href="googleLink" class="border-none outline-0 bg-[#181D31] py-1.75  w-full rounded-sm font-semibold cursor-pointer flex justify-center ring-2
-            ring-[#E5BA73] animate__animated animate__zoomIn"><img :src="google" width="27" alt="google"/></a>
-          <a :href="twitLink" class="border-none outline-0 bg-[#181D31] py-1.75  w-full rounded-sm font-semibold cursor-pointer flex justify-center ring-2
-           ring-[#E5BA73] animate__animated animate__zoomIn"><img :src="twit" width="35" alt="twitter"/></a>
-        </span>
-
-         <div class="flex justify-center mt-12">
-            <p class="text-[#181D31] font-bold font-500 text-center tracking-widest animate__animated animate__zoomIn">
-              {{ name }}
+          <div class="max-w-2xl">
+            <p class="hero-copy text-sm font-bold uppercase tracking-[0.28em] text-[#F7E5C8]">Learning Environment</p>
+            <h1 class="hero-copy mt-4 text-6xl font-bold leading-none text-white xl:text-7xl">
+              Learning Never Exhausts The Mind
+            </h1>
+            <p class="hero-copy mt-5 text-lg font-medium text-white/80">- Leonardo da Vinci</p>
+            <p class="hero-copy mt-6 max-w-xl text-base leading-7 text-white/75">
+              Warm spaces, calm progress, and every academic tool in one premium student dashboard.
             </p>
           </div>
-      </div>
-      <div class="relative w-87 mt-4.75">
-        <input
-          v-model="userEmail"
-          class="relative w-75 rounded-xl bg-amber-100 p-3 bordor-none outine-none text-[#181D31] text-lg tracking-widest z-10 inputco"
-          required="required"
-        />
 
-        <span
-          class="absolute left-0 p-10 text-[1em] text-[#8f8f8f] pointer-events-none tracking-widest ease-[0.5s] inputco"
-          >User ID</span
-        >
-        <i
-          class="absolute left-0 bottom-0 w-full h-0.5 bg-[#E5BA73] rounded-sm pointer-events-none ease-[0.5s] z-9 inputcont"
-        ></i>
-      </div>
-      <div class="relative w-87 mt-8.75">
-        <input
-          v-model="password"
-          type="password"
-          class="relative w-75 rounded-xl bg-amber-100 p-3 bordor-none outine-none text-[#181D31] text-lg tracking-wider z-10 inputco"
-          required="required"
-        />
-        <span
-          class="absolute left-0 p-10 text-[1em] text-[#8f8f8f] pointer-events-none tracking-widest ease-[0.5s] inputco"
-          >Password</span
-        >
-        <i
-          class="absolute left-0 bottom-0 w-full h-0.5 bg-[#E5BA73] rounded-sm pointer-events-none ease-[0.5s] z-9 inputcont"
-        ></i>
-      </div>
-      <div class="flex justify-between">
-        <a
-          href="#"
-          class="my-2.5 text-[0.75em] text-[#8f8f8f] no-underline hover:text-[#E5BA73] &:nth-2:text-[#E5BA73]"
-          >Forgot OTP?</a
-        >
-        <a
-          href="#"
-          class="my-2.5 text-[0.75em] text-[#8f8f8f] no-underline hover:text-[#E5BA73] &:nth-2:text-[#E5BA73]"
-          >Register</a
-        >
-      </div>
-      <button
-        type="submit"
-        class="border-none outline-0 bg-[#E5BA73] py-2.75 px-18.25 w-full mt-12.5 rounded-sm font-semibold cursor-pointer animate__animated animate__zoomIn"
-        value="Connect"
-      >
-        Submit
-      </button>
+          <div class="grid max-w-xl grid-cols-3 gap-4">
+            <div v-for="stat in heroStats" :key="stat.label" class="stat-card rounded-2xl border border-white/20 bg-white/15 p-4 text-white shadow-[0_20px_50px_rgba(0,0,0,.16)] backdrop-blur-xl">
+              <p class="text-2xl font-extrabold">{{ stat.value }}</p>
+              <p class="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-white/70">{{ stat.label }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="flex min-h-screen items-center justify-center px-5 py-10 sm:px-8">
+        <div class="w-full max-w-md">
+          <div class="logo mb-8 flex items-center gap-4 lg:hidden">
+            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-[var(--gold)] text-[var(--navy)] shadow-xl">
+              <span class="material-symbols-outlined">auto_stories</span>
+            </div>
+            <div>
+              <p class="display-font text-4xl font-bold text-[var(--navy)]">{{ SystemName }}</p>
+              <p class="text-xs font-bold uppercase tracking-[0.22em] text-[var(--muted)]">Campus Experience</p>
+            </div>
+          </div>
+
+          <form
+            @submit.prevent="handleLogin"
+            class="login-card rounded-[1.75rem] border border-white/80 bg-white/70 p-6 shadow-[0_25px_50px_rgba(0,0,0,.08)] backdrop-blur-xl sm:p-8"
+          >
+            <div>
+              <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#b8860b]">Login</p>
+              <h2 class="mt-3 text-5xl font-bold leading-none text-[var(--navy)]">Enter EduSuite</h2>
+              <p class="mt-4 text-sm leading-6 text-[var(--muted)]">
+                Continue from campus experience into your learning environment and dashboard.
+              </p>
+            </div>
+
+            <div class="mt-7 grid grid-cols-3 gap-3">
+              <a :href="appleLink" class="grid h-12 place-items-center rounded-2xl bg-[var(--navy)] shadow-sm ring-1 ring-[var(--gold)]/50 transition hover:-translate-y-0.5 hover:shadow-md">
+                <img :src="apple" class="h-6 w-6 object-contain" alt="Apple">
+              </a>
+              <a :href="googleLink" class="grid h-12 place-items-center rounded-2xl bg-[var(--navy)] shadow-sm ring-1 ring-[var(--gold)]/50 transition hover:-translate-y-0.5 hover:shadow-md">
+                <img :src="google" class="h-6 w-6 object-contain" alt="Google">
+              </a>
+              <a :href="twitLink" class="grid h-12 place-items-center rounded-2xl bg-[var(--navy)] shadow-sm ring-1 ring-[var(--gold)]/50 transition hover:-translate-y-0.5 hover:shadow-md">
+                <img :src="twit" class="h-7 w-7 object-contain invert" alt="X">
+              </a>
+            </div>
+
+            <div class="my-7 flex items-center gap-4">
+              <span class="h-px flex-1 bg-slate-200"></span>
+              <span class="text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">or use student ID</span>
+              <span class="h-px flex-1 bg-slate-200"></span>
+            </div>
+
+            <div class="space-y-5">
+              <label class="block">
+                <span class="text-sm font-bold text-[var(--text)]">User ID</span>
+                <input
+                  v-model="userEmail"
+                  required
+                  class="mt-2 h-13 w-full rounded-2xl border border-slate-200 bg-white/85 px-4 text-[var(--navy)] outline-none transition placeholder:text-slate-400 focus:border-[var(--gold)] focus:ring-4 focus:ring-[#E5BA73]/20"
+                  placeholder="admins"
+                >
+              </label>
+
+              <label class="block">
+                <span class="text-sm font-bold text-[var(--text)]">Password</span>
+                <input
+                  v-model="password"
+                  type="password"
+                  required
+                  class="mt-2 h-13 w-full rounded-2xl border border-slate-200 bg-white/85 px-4 text-[var(--navy)] outline-none transition placeholder:text-slate-400 focus:border-[var(--gold)] focus:ring-4 focus:ring-[#E5BA73]/20"
+                  placeholder="Enter password"
+                >
+              </label>
+            </div>
+
+            <div class="mt-4 flex items-center justify-between text-sm font-semibold">
+              <a href="#" class="text-[var(--muted)] transition hover:text-[#b8860b]">Forgot OTP?</a>
+              <a href="#" class="text-[#b8860b] transition hover:text-[var(--navy)]">Register</a>
+            </div>
+
+            <button
+              type="submit"
+              class="mt-8 flex h-13 w-full items-center justify-center gap-2 rounded-2xl bg-[var(--gold)] font-extrabold text-[var(--navy)] shadow-[0_18px_35px_rgba(229,186,115,.35)] transition hover:-translate-y-0.5 hover:shadow-[0_22px_40px_rgba(229,186,115,.42)]"
+            >
+              <span>Login to Dashboard</span>
+              <span class="material-symbols-outlined text-xl">arrow_forward</span>
+            </button>
+          </form>
+
+          <p class="mt-5 text-center text-xs font-semibold text-[var(--muted)]">
+            Demo access: User ID <span class="text-[var(--navy)]">admins</span>
+          </p>
+        </div>
+      </section>
     </div>
-  </form>
 
-  <div
-    v-if="showToast"
-    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-lg shadow-lg text-sm font-medium transition-all duration-300 "
-    :class="
-      toastType == 'success'
-        ? 'bg-[#181D31] text-white animate__animated animate__ease-out'
-        : 'big-red-600 text-white' 
-         "
-  >
-    {{ toastMessage }}
-  </div>
+    <div
+      v-if="showToast"
+      class="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-2xl px-6 py-3 text-sm font-bold shadow-xl transition-all duration-300"
+      :class="toastType === 'success' ? 'bg-[var(--navy)] text-white' : 'bg-red-600 text-white'"
+    >
+      {{ toastMessage }}
+    </div>
+  </main>
 </template>
 
 <style scoped>
-.toast-enter-from {
-  opacity: 0;
-  transform: translate(-50%, 20px);
+.particles span {
+  animation: floatParticle 8s ease-in-out infinite;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  height: 5px;
+  left: var(--left);
+  position: absolute;
+  top: 14%;
+  width: 5px;
+  animation-delay: var(--delay);
 }
-.toast-enter-to {
-  opacity: 1;
-  transform: translate(-50%, 0);
-}
-.toast-leave-from {
-  opacity: 1;
-  transform: translate(-50%, 0);
-}
-.toast-leave-to {
-  opacity: 0;
-  transform: translate(-50%, 20px);
+
+@keyframes floatParticle {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  25% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(78vh);
+  }
 }
 </style>

@@ -59,7 +59,7 @@ const getIconStyle = (bgcolor, borderColor) => {
               </div>
             </div>
 
-            <div class="relative rounded-2xl border border-white/10 bg-white p-5 text-[#181D31] shadow-2xl dark:bg-slate-950 dark:text-white">
+            <div class="relative rounded-2xl border border-white/10 bg-white p-5 text-[#181D31] shadow-2xl dark:bg-[#0f172a] dark:text-white">
               <div class="flex items-center justify-between">
                 <div>
                   <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">Academic progress</p>
@@ -108,12 +108,12 @@ const getIconStyle = (bgcolor, borderColor) => {
       <div
         v-for="active in activeStatus"
         :key="active.id"
-        :class="`portal-card border-l-4 ${active.borderColor}`"
+        :class="`portal-card metric-card border-l-4 ${active.borderColor}`"
         :style="`animation-delay: ${(active.id - 1) * 0.08}s`"
       >
         <div class="flex items-center justify-between">
           <div class="text-sm font-semibold text-slate-500 dark:text-slate-400">{{ active.name }}</div>
-          <span class="material-symbols-outlined rounded-xl p-3 text-2xl" :style="getIconStyle(active.bgcolor, active.borderColor)">{{ active.icon }}</span>
+          <span class="metric-icon material-symbols-outlined rounded-xl p-3 text-2xl" :style="getIconStyle(active.bgcolor, active.borderColor)">{{ active.icon }}</span>
         </div>
         <div class="mt-4 text-3xl font-bold text-[#181D31] dark:text-white">{{ active.value }}</div>
         <div class="mt-1 text-sm font-medium text-slate-500 dark:text-slate-400">{{ active.message }}</div>
@@ -162,26 +162,29 @@ const getIconStyle = (bgcolor, borderColor) => {
       </div>
 
       <aside class="space-y-6">
-        <div class="portal-card">
+        <div class="portal-card gradient-card">
           <div class="mb-5 flex items-center justify-between">
-            <h3 class="text-lg font-bold text-[#181D31] dark:text-white">Achievements</h3>
+            <h3 class="text-lg font-bold text-white">Achievements</h3>
             <span class="material-symbols-outlined text-[#E5BA73]">emoji_events</span>
           </div>
           <div class="space-y-3">
-            <div v-for="achievement in achievements" :key="achievement.id" class="flex items-center gap-3 rounded-xl bg-slate-50 p-3 dark:bg-slate-900">
+            <div v-for="achievement in achievements" :key="achievement.id" class="flex items-center gap-3 rounded-xl border border-white/10 bg-white/10 p-3 backdrop-blur">
               <span class="material-symbols-outlined rounded-lg bg-[#E5BA73]/20 p-2 text-[#b8860b]">{{ achievement.icon }}</span>
               <div>
-                <p class="font-semibold text-[#181D31] dark:text-white">{{ achievement.name }}</p>
-                <p class="text-xs text-slate-500 dark:text-slate-400">{{ achievement.detail }}</p>
+                <p class="font-semibold text-white">{{ achievement.name }}</p>
+                <p class="text-xs text-slate-300">{{ achievement.detail }}</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="portal-card">
-          <div class="mb-5 flex items-center justify-between">
-            <h3 class="text-lg font-bold text-[#181D31] dark:text-white">Campus Feed</h3>
-            <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-600 dark:bg-blue-950/60 dark:text-blue-300">Live</span>
+        <div class="portal-card campus-feed-card ">
+          <div class="mb-5 flex items-center justify-between ">
+            <h3 class="text-lg font-bold text-[#181D31] dark:text-white ">Campus Feed</h3>
+            <span class="flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-600 dark:bg-blue-950/60 dark:text-blue-300">
+              <span class="live-dot"></span>
+              Live
+            </span>
           </div>
           <div class="space-y-4">
             <article v-for="item in campusFeed" :key="item.id" class="border-b border-slate-100 pb-4 last:border-0 last:pb-0 dark:border-slate-800">
@@ -248,8 +251,58 @@ const getIconStyle = (bgcolor, borderColor) => {
 
 :global(.dark) .portal-card,
 :global(.dark) .course-card {
-  background: rgba(15, 23, 42, 0.92);
+  background: #0f172a;
   border-color: rgba(51, 65, 85, 0.9);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+}
+
+:global(html.dark) .metric-card,
+:global(.dark) .metric-card {
+  background: #0f172a !important;
+  background-color: #0f172a !important;
+  background-image: none !important;
+  border-top-color: rgba(51, 65, 85, 0.9);
+  border-right-color: rgba(51, 65, 85, 0.9);
+  border-bottom-color: rgba(51, 65, 85, 0.9);
+}
+
+:global(html.dark) .metric-card .metric-icon,
+:global(.dark) .metric-card .metric-icon {
+  background: #111827 !important;
+  color: #E5BA73 !important;
+  box-shadow: inset 0 0 0 1px rgba(229, 186, 115, 0.18);
+}
+
+:global(.dark) .campus-feed-card {
+  background: #0f172a !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2) !important;
+}
+
+.live-dot {
+  animation: liveBlink 1.15s ease-in-out infinite;
+  background: #22c55e;
+  border-radius: 999px;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
+  height: 0.45rem;
+  width: 0.45rem;
+}
+
+@keyframes liveBlink {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.45);
+  }
+  50% {
+    opacity: 0.45;
+    box-shadow: 0 0 0 5px rgba(34, 197, 94, 0);
+  }
+}
+
+.gradient-card,
+:global(.dark) .gradient-card {
+  background: linear-gradient(135deg, #181D31, rgba(24, 29, 49, 0.96) 48%, rgba(229, 186, 115, 0.18));
+  border: 1px solid rgba(229, 186, 115, 0.16);
+  box-shadow: 0 22px 55px rgba(24, 29, 49, 0.22);
 }
 </style>

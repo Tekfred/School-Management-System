@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Login.vue'
 import MainLayout from '../components/mainLayout.vue'
 import DashboardView from '../views/Dashboard/DashboardView.vue'
-import studentsview  from '../views/Students/studentsview.vue'
-import teachersview from '../views/Teachers/teachersview.vue'
+import studentsview  from '../views/Courses/Courseview.vue'
+import Lecturerview from '../views/Lecturers/lecturerview.vue'
 import Financialview from '../views/Finance/Financialview.vue'
 import Settingsview from '../views/Settings/Settingsview.vue'
 
@@ -12,7 +12,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/login' // Root redirects to login
+      redirect: '/app/login' // Root redirects to login
     },
 
     {
@@ -37,8 +37,8 @@ const router = createRouter({
           },
           {
             path: 'teachers',
-            name: 'teachers',
-            component: teachersview
+            name: 'lecturers',
+            component: Lecturerview
           },
           {
             path: 'finance',
