@@ -71,7 +71,7 @@ const getBarHeight = (students) => {
         class="flex flex-col items-center justify-end flex-1 h-full gap-2"
       >
         <div
-          class="group relative w-full rounded-t-xl bg-gradient-to-t from-[#181D31] via-blue-500 to-[#E5BA73] transition-all hover:shadow-lg"
+          class="group relative w-full rounded-t-xl bg-linear-to-t from-[#181D31] via-blue-500 to-[#E5BA73] transition-all hover:shadow-lg"
           :style="{
             height: `${getBarHeight(data.students)}%`,
             minHeight: '20px',

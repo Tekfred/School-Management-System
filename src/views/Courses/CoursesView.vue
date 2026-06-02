@@ -9,7 +9,7 @@ import { courses } from './coursesData'
 </script>
 
 <template>
-  <div class="min-h-full p-6 bg-gradient-to-r from-[#181D31] to-[#1e293b] backdrop-blur text-white">
+  <div class="min-h-full p-6 bg-linear-to-r from-[#181D31] to-[#1e293b] backdrop-blur text-white">
     <CourseHero />
 
     <div class="mt-6 grid gap-6 lg:grid-cols-[1fr_360px]">
