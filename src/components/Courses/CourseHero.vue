@@ -1,9 +1,17 @@
 <script setup>
+import { ref, onMounted } from 'vue'
+const root = ref(null)
 // static hero for Learning Hub; tweak content or replace image path as needed
+onMounted(async () => {
+  try {
+    const gsap = window.gsap || (await import(/* @vite-ignore */ 'gsap')).default
+    gsap.from(root.value, { y: 10, opacity: 0, duration: 0.5, ease: 'power2.out' })
+  } catch (e) {}
+})
 </script>
 
 <template>
-  <section class="rounded-2xl p-6 relative overflow-hidden" style="background: linear-gradient(135deg, rgba(24,29,49,0.9), rgba(30,41,59,0.85));">
+  <section ref="root" class="rounded-2xl p-6 relative overflow-hidden" style="background: linear-gradient(135deg, rgba(24,29,49,0.9), rgba(30,41,59,0.85));">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
       <div>
         <p class="text-sm uppercase tracking-wider text-[#E5BA73]">Learning Hub</p>

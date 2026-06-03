@@ -1,5 +1,14 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 defineProps({ data: Array })
+const root = ref(null)
+
+onMounted(async () => {
+  try {
+    const gsap = window.gsap || (await import(/* @vite-ignore */ 'gsap')).default
+    gsap.from(root.value?.querySelectorAll('div > div'), { y: 6, opacity: 0, duration: 0.4, stagger: 0.04, ease: 'power2.out' })
+  } catch(e) {}
+})
 </script>
 
 <template>

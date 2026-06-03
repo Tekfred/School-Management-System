@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue'
 const chartRef = ref(null)
 const dataLoaded = ref(false)
 let chartInstance = null
+const root = ref(null)
 onMounted(async () => {
   try {
     const Chart = (await import('chart.js/auto')).default
@@ -20,15 +21,23 @@ onMounted(async () => {
       options: { indexAxis: 'y', responsive: true }
     })
     dataLoaded.value = true
+    try {
+      const gsap = window.gsap || (await import(/* @vite-ignore */ 'gsap')).default
+      gsap.from(root.value, { y: 6, opacity: 0, duration: 0.45, ease: 'power2.out' })
+    } catch(e) {}
   } catch (err) {
     // Chart.js not available; fallback to simple bars
     dataLoaded.value = false
+    try {
+      const gsap = window.gsap || (await import(/* @vite-ignore */ 'gsap')).default
+      gsap.from(root.value, { y: 6, opacity: 0, duration: 0.45, ease: 'power2.out' })
+    } catch(e) {}
   }
 })
 </script>
 
 <template>
-  <div class="rounded-xl bg-white/6 p-6 backdrop-blur">
+  <div ref="root" class="rounded-xl bg-white/6 p-6 backdrop-blur">
     <h3 class="font-bold mb-4">Most Popular Courses</h3>
     <div v-if="dataLoaded">
       <canvas ref="chartRef" />

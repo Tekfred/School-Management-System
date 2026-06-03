@@ -1,9 +1,19 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 defineProps({ stats: Array })
+const root = ref(null)
+
+onMounted(async () => {
+  try {
+    const gsap = window.gsap || (await import(/* @vite-ignore */ 'gsap')).default
+    const cards = root.value?.querySelectorAll('div > div')
+    if (cards && cards.length) gsap.from(cards, { y: 8, opacity: 0, duration: 0.45, stagger: 0.05, ease: 'power2.out' })
+  } catch(e) {}
+})
 </script>
 
 <template>
-  <section class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+  <section ref="root" class="grid grid-cols-1 sm:grid-cols-4 gap-4">
     <div v-for="s in stats" :key="s.id" class="rounded-xl bg-white p-4 shadow-md flex items-center gap-4">
       <div class="w-12 h-12 rounded-lg flex items-center justify-center text-2xl bg-slate-100 text-[#181D31]">
         <span class="material-symbols-outlined">{{ s.icon }}</span>

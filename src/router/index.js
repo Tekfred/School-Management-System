@@ -12,11 +12,11 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/app/login' // Root redirects to login
+      redirect: '/login' // Root redirects to login
     },
 
     {
-      path: '/login',
+      path: '/app/login',
       name: 'Login',
       component: Login
     },

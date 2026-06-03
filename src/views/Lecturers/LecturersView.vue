@@ -1,4 +1,5 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 import LecturerStats from './Components/LecturerStats.vue'
 import LecturerDirectory from './Components/LecturerDirectory.vue'
 import TopPerformers from './Components/TopPerformers.vue'
@@ -6,10 +7,18 @@ import TeachingLoad from './Components/TeachingLoad.vue'
 import UpcomingLectures from './Components/UpcomingLectures.vue'
 import LecturerAvailability from './Components/LecturerAvailability.vue'
 import { lecturers } from './Data'
+
+const root = ref(null)
+onMounted(async () => {
+  try {
+    const gsap = window.gsap || (await import(/* @vite-ignore */ 'gsap')).default
+    gsap.from(root.value, { y: 10, opacity: 0, duration: 0.5, ease: 'power2.out' })
+  } catch (e) {}
+})
 </script>
 
 <template>
-  <div class="min-h-full p-6">
+  <div ref="root" class="min-h-full p-6">
     <header class="mb-6">
       <h1 class="text-2xl font-bold">Lecturer Overview</h1>
     </header>

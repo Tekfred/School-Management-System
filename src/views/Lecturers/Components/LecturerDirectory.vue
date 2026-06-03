@@ -1,9 +1,19 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 defineProps({ items: Array })
+const root = ref(null)
+
+onMounted(async () => {
+  try {
+    const gsap = window.gsap || (await import(/* @vite-ignore */ 'gsap')).default
+    const cards = root.value?.querySelectorAll('article')
+    if (cards && cards.length) gsap.from(cards, { y: 10, opacity: 0, duration: 0.5, stagger: 0.05, ease: 'power2.out' })
+  } catch (e) {}
+})
 </script>
 
 <template>
-  <section>
+  <section ref="root">
     <h3 class="text-lg font-bold mb-4">Lecturer Directory</h3>
     <div class="grid gap-4 md:grid-cols-2">
       <article v-for="l in items" :key="l.id" class="bg-white dark:bg-slate-800 rounded-2xl p-5 hover:-translate-y-1 hover:shadow-xl transition">

@@ -1,9 +1,18 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 defineProps({ course: Object })
+const root = ref(null)
+
+onMounted(async () => {
+  try {
+    const gsap = window.gsap || (await import(/* @vite-ignore */ 'gsap')).default
+    gsap.from(root.value, { y: 6, opacity: 0, duration: 0.4, ease: 'power2.out' })
+  } catch (e) {}
+})
 </script>
 
 <template>
-  <article class="course-card transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:scale-[1.02]">
+  <article ref="root" class="course-card transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:scale-[1.02]">
     <div class="flex items-center gap-3 mb-4">
       <div class="w-12 h-12 rounded-lg bg-white/6 flex items-center justify-center text-lg">📚</div>
       <div>
