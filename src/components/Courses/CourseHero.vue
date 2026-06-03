@@ -4,8 +4,8 @@ const root = ref(null)
 // static hero for Learning Hub; tweak content or replace image path as needed
 onMounted(async () => {
   try {
-    const gsap = window.gsap || (await import(/* @vite-ignore */ 'gsap')).default
-    gsap.from(root.value, { y: 10, opacity: 0, duration: 0.5, ease: 'power2.out' })
+    const gsap = window.gsap
+    if (gsap) gsap.from(root.value, { y: 10, opacity: 0, duration: 0.5, ease: 'power2.out' })
   } catch (e) {}
 })
 </script>

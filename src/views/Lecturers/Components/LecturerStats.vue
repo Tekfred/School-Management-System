@@ -5,9 +5,9 @@ const root = ref(null)
 
 onMounted(async () => {
   try {
-    const gsap = window.gsap || (await import(/* @vite-ignore */ 'gsap')).default
+    const gsap = window.gsap
     const cards = root.value?.querySelectorAll('div > div')
-    if (cards && cards.length) gsap.from(cards, { y: 8, opacity: 0, duration: 0.45, stagger: 0.05, ease: 'power2.out' })
+    if (cards && cards.length && gsap) gsap.from(cards, { y: 8, opacity: 0, duration: 0.45, stagger: 0.05, ease: 'power2.out' })
   } catch(e) {}
 })
 </script>

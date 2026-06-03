@@ -22,15 +22,15 @@ onMounted(async () => {
     })
     dataLoaded.value = true
     try {
-      const gsap = window.gsap || (await import(/* @vite-ignore */ 'gsap')).default
-      gsap.from(root.value, { y: 6, opacity: 0, duration: 0.45, ease: 'power2.out' })
+      const gsap = window.gsap
+      if (gsap) gsap.from(root.value, { y: 6, opacity: 0, duration: 0.45, ease: 'power2.out' })
     } catch(e) {}
   } catch (err) {
     // Chart.js not available; fallback to simple bars
     dataLoaded.value = false
     try {
-      const gsap = window.gsap || (await import(/* @vite-ignore */ 'gsap')).default
-      gsap.from(root.value, { y: 6, opacity: 0, duration: 0.45, ease: 'power2.out' })
+      const gsap = window.gsap
+      if (gsap) gsap.from(root.value, { y: 6, opacity: 0, duration: 0.45, ease: 'power2.out' })
     } catch(e) {}
   }
 })
