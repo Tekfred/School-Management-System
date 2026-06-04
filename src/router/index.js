@@ -3,7 +3,7 @@ import Login from '../views/Login.vue'
 import MainLayout from '../components/mainLayout.vue'
 import DashboardView from '../views/Dashboard/DashboardView.vue'
 import studentsview  from '../views/Courses/Courseview.vue'
-import Lecturerview from '../views/Lecturers/lecturerview.vue'
+import LecturersView from '../views/Lecturers/LecturersView.vue'
 import Financialview from '../views/Finance/Financialview.vue'
 import Settingsview from '../views/Settings/Settingsview.vue'
 
@@ -12,11 +12,11 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/app/login' // Root redirects to login
+      redirect: '/login' // Root redirects to login
     },
 
     {
-      path: '/login',
+      path: '/app/login',
       name: 'Login',
       component: Login
     },
@@ -38,7 +38,7 @@ const router = createRouter({
           {
             path: 'teachers',
             name: 'lecturers',
-            component: Lecturerview
+            component: LecturersView
           },
           {
             path: 'finance',

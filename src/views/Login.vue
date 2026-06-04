@@ -89,18 +89,18 @@ const handleLogin = () => {
 </script>
 
 <template>
-  <main class="min-h-screen bg-[var(--background)] text-[var(--text)]">
+  <main class="min-h-screen bg-(--background) text-(--text)">
     <div class="grid min-h-screen lg:grid-cols-[minmax(0,1.08fr)_minmax(420px,0.92fr)]">
       <section class="relative hidden overflow-hidden lg:block">
         <img src="/bg-uni1.jpg" alt="Sunlit university library" class="absolute inset-0 h-full w-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-br from-[#181D31]/65 via-[#181D31]/25 to-[#E5BA73]/20"></div>
+        <div class="absolute inset-0 bg-linear-to-br from-[#181D31]/65 via-[#181D31]/25 to-[#E5BA73]/20"></div>
         <div class="particles" aria-hidden="true">
           <span v-for="item in 14" :key="item" :style="{ '--delay': `${item * 0.35}s`, '--left': `${8 + item * 6}%` }"></span>
         </div>
 
         <div class="relative z-10 flex min-h-screen flex-col justify-between p-10 xl:p-14">
           <div class="logo flex items-center gap-4">
-            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-[var(--gold)] text-[var(--navy)] shadow-xl">
+            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-(--gold) text-(--navy) shadow-xl">
               <span class="material-symbols-outlined">auto_stories</span>
             </div>
             <div>
@@ -132,12 +132,12 @@ const handleLogin = () => {
       <section class="flex min-h-screen items-center justify-center px-5 py-10 sm:px-8">
         <div class="w-full max-w-md">
           <div class="logo mb-8 flex items-center gap-4 lg:hidden">
-            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-[var(--gold)] text-[var(--navy)] shadow-xl">
+            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-(--gold) text-(--navy) shadow-xl">
               <span class="material-symbols-outlined">auto_stories</span>
             </div>
             <div>
-              <p class="display-font text-4xl font-bold text-[var(--navy)]">{{ SystemName }}</p>
-              <p class="text-xs font-bold uppercase tracking-[0.22em] text-[var(--muted)]">Campus Experience</p>
+              <p class="display-font text-4xl font-bold text-(--navy)">{{ SystemName }}</p>
+              <p class="text-xs font-bold uppercase tracking-[0.22em] text-(--muted)">Campus Experience</p>
             </div>
           </div>
 
@@ -147,69 +147,69 @@ const handleLogin = () => {
           >
             <div>
               <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#b8860b]">Login</p>
-              <h2 class="mt-3 text-5xl font-bold leading-none text-[var(--navy)]">Enter EduSuite</h2>
-              <p class="mt-4 text-sm leading-6 text-[var(--muted)]">
+              <h2 class="mt-3 text-5xl font-bold leading-none text-(--navy)">Enter EduSuite</h2>
+              <p class="mt-4 text-sm leading-6 text-(--muted)">
                 Continue from campus experience into your learning environment and dashboard.
               </p>
             </div>
 
             <div class="mt-7 grid grid-cols-3 gap-3">
-              <a :href="appleLink" class="grid h-12 place-items-center rounded-2xl bg-[var(--navy)] shadow-sm ring-1 ring-[var(--gold)]/50 transition hover:-translate-y-0.5 hover:shadow-md">
+              <a :href="appleLink" class="grid h-12 place-items-center rounded-2xl bg-(--navy) shadow-sm ring-1 ring-(--gold)/50 transition hover:-translate-y-0.5 hover:shadow-md">
                 <img :src="apple" class="h-6 w-6 object-contain" alt="Apple">
               </a>
-              <a :href="googleLink" class="grid h-12 place-items-center rounded-2xl bg-[var(--navy)] shadow-sm ring-1 ring-[var(--gold)]/50 transition hover:-translate-y-0.5 hover:shadow-md">
+              <a :href="googleLink" class="grid h-12 place-items-center rounded-2xl bg-(--navy) shadow-sm ring-1 ring-(--gold)/50 transition hover:-translate-y-0.5 hover:shadow-md">
                 <img :src="google" class="h-6 w-6 object-contain" alt="Google">
               </a>
-              <a :href="twitLink" class="grid h-12 place-items-center rounded-2xl bg-[var(--navy)] shadow-sm ring-1 ring-[var(--gold)]/50 transition hover:-translate-y-0.5 hover:shadow-md">
+              <a :href="twitLink" class="grid h-12 place-items-center rounded-2xl bg-(--navy) shadow-sm ring-1 ring-(--gold)/50 transition hover:-translate-y-0.5 hover:shadow-md">
                 <img :src="twit" class="h-7 w-7 object-contain invert" alt="X">
               </a>
             </div>
 
             <div class="my-7 flex items-center gap-4">
               <span class="h-px flex-1 bg-slate-200"></span>
-              <span class="text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">or use student ID</span>
+              <span class="text-xs font-bold uppercase tracking-[0.18em] text-(--muted)">or use student ID</span>
               <span class="h-px flex-1 bg-slate-200"></span>
             </div>
 
             <div class="space-y-5">
               <label class="block">
-                <span class="text-sm font-bold text-[var(--text)]">User ID</span>
+                <span class="text-sm font-bold text-(--text)">User ID</span>
                 <input
                   v-model="userEmail"
                   required
-                  class="mt-2 h-13 w-full rounded-2xl border border-slate-200 bg-white/85 px-4 text-[var(--navy)] outline-none transition placeholder:text-slate-400 focus:border-[var(--gold)] focus:ring-4 focus:ring-[#E5BA73]/20"
+                  class="mt-2 h-13 w-full rounded-2xl border border-slate-200 bg-white/85 px-4 text-(--navy) outline-none transition placeholder:text-slate-400 focus:border-(--gold) focus:ring-4 focus:ring-[#E5BA73]/20"
                   placeholder="admins"
                 >
               </label>
 
               <label class="block">
-                <span class="text-sm font-bold text-[var(--text)]">Password</span>
+                <span class="text-sm font-bold text-(--text)">Password</span>
                 <input
                   v-model="password"
                   type="password"
                   required
-                  class="mt-2 h-13 w-full rounded-2xl border border-slate-200 bg-white/85 px-4 text-[var(--navy)] outline-none transition placeholder:text-slate-400 focus:border-[var(--gold)] focus:ring-4 focus:ring-[#E5BA73]/20"
+                  class="mt-2 h-13 w-full rounded-2xl border border-slate-200 bg-white/85 px-4 text-(--navy) outline-none transition placeholder:text-slate-400 focus:border-(--gold) focus:ring-4 focus:ring-[#E5BA73]/20"
                   placeholder="Enter password"
                 >
               </label>
             </div>
 
             <div class="mt-4 flex items-center justify-between text-sm font-semibold">
-              <a href="#" class="text-[var(--muted)] transition hover:text-[#b8860b]">Forgot OTP?</a>
-              <a href="#" class="text-[#b8860b] transition hover:text-[var(--navy)]">Register</a>
+              <a href="#" class="text-(--muted) transition hover:text-[#b8860b]">Forgot OTP?</a>
+              <a href="#" class="text-[#b8860b] transition hover:text-(--navy)">Register</a>
             </div>
 
             <button
               type="submit"
-              class="mt-8 flex h-13 w-full items-center justify-center gap-2 rounded-2xl bg-[var(--gold)] font-extrabold text-[var(--navy)] shadow-[0_18px_35px_rgba(229,186,115,.35)] transition hover:-translate-y-0.5 hover:shadow-[0_22px_40px_rgba(229,186,115,.42)]"
+              class="mt-8 flex h-13 w-full items-center justify-center gap-2 rounded-2xl bg-(--gold) font-extrabold text-(--navy) shadow-[0_18px_35px_rgba(229,186,115,.35)] transition hover:-translate-y-0.5 hover:shadow-[0_22px_40px_rgba(229,186,115,.42)]"
             >
               <span>Login to Dashboard</span>
               <span class="material-symbols-outlined text-xl">arrow_forward</span>
             </button>
           </form>
 
-          <p class="mt-5 text-center text-xs font-semibold text-[var(--muted)]">
-            Demo access: User ID <span class="text-[var(--navy)]">admins</span>
+          <p class="mt-5 text-center text-xs font-semibold text-(--muted)">
+            Demo access: User ID <span class="text-(--navy)">admins</span>
           </p>
         </div>
       </section>
@@ -218,7 +218,7 @@ const handleLogin = () => {
     <div
       v-if="showToast"
       class="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-2xl px-6 py-3 text-sm font-bold shadow-xl transition-all duration-300"
-      :class="toastType === 'success' ? 'bg-[var(--navy)] text-white' : 'bg-red-600 text-white'"
+      :class="toastType === 'success' ? 'bg-(--navy) text-white' : 'bg-red-600 text-white'"
     >
       {{ toastMessage }}
     </div>
