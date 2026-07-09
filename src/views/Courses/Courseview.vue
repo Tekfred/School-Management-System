@@ -8,7 +8,7 @@ import { courses } from '@/views/Courses/coursesData'
 </script>
 
 <template>
-  <div class="min-h-full p-6">
+  <div class="app-page p-6">
     <CourseHero />
 
     <div class="mt-6">
@@ -20,14 +20,14 @@ import { courses } from '@/views/Courses/coursesData'
     </div>
 
     <section class="mt-6">
-      <h3 class="text-lg font-bold mb-4">Course Grid</h3>
+      <h3 class="heading-text mb-4 text-lg font-bold">Course Grid</h3>
       <div class="grid gap-4 md:grid-cols-3">
         <CourseCard v-for="c in courses" :key="c.id" :course="c" />
       </div>
     </section>
 
     <section class="mt-8">
-      <h3 class="text-lg font-bold mb-4">Recently Accessed</h3>
+      <h3 class="heading-text mb-4 text-lg font-bold">Recently Accessed</h3>
       <RecentlyAccessed />
     </section>
   </div>

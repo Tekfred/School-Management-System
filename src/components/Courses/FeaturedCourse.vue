@@ -11,24 +11,24 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div ref="root" class="rounded-xl overflow-hidden border bg-white/6 p-6 backdrop-blur">
-    <h3 class="text-2xl font-bold mb-2">Computer Science 101</h3>
-    <p class="text-sm text-slate-200/70 mb-4">A foundational course introducing algorithms, data structures and problem solving.</p>
+  <div ref="root" class="surface-card interactive-surface overflow-hidden p-6">
+    <h3 class="heading-text mb-2 text-2xl font-bold">Computer Science 101</h3>
+    <p class="muted-text mb-4 text-sm">A foundational course introducing algorithms, data structures and problem solving.</p>
     <div class="grid grid-cols-3 gap-4 mb-4">
       <div>
-        <p class="text-xs text-slate-300">Students</p>
-        <p class="font-bold">320</p>
+        <p class="muted-text text-xs">Students</p>
+        <p class="heading-text font-bold">320</p>
       </div>
       <div>
-        <p class="text-xs text-slate-300">Modules</p>
-        <p class="font-bold">8</p>
+        <p class="muted-text text-xs">Modules</p>
+        <p class="heading-text font-bold">8</p>
       </div>
       <div>
-        <p class="text-xs text-slate-300">Completion</p>
-        <p class="font-bold">92%</p>
+        <p class="muted-text text-xs">Completion</p>
+        <p class="heading-text font-bold">92%</p>
       </div>
     </div>
-    <button class="rounded-full bg-[#E5BA73] px-5 py-2 font-semibold text-black">Explore Course</button>
+    <button class="primary-action rounded-full px-5 py-2 font-semibold">Explore Course</button>
   </div>
 </template>
 

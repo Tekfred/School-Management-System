@@ -9,7 +9,7 @@ import { courses } from './coursesData'
 </script>
 
 <template>
-  <div class="min-h-full p-6 bg-linear-to-r from-[#181D31] to-[#1e293b] backdrop-blur text-white">
+  <div class="app-page p-6">
     <CourseHero />
 
     <div class="mt-6 grid gap-6 lg:grid-cols-[1fr_360px]">
@@ -21,14 +21,14 @@ import { courses } from './coursesData'
         </div>
 
         <section class="mt-6">
-          <h3 class="text-xl font-bold mb-4">Course Grid</h3>
+          <h3 class="heading-text mb-4 text-xl font-bold">Course Grid</h3>
           <div class="grid gap-4 md:grid-cols-3">
             <CourseCard v-for="c in courses" :key="c.id" :course="c" />
           </div>
         </section>
 
         <section class="mt-8">
-          <h3 class="text-xl font-bold mb-4">Recently Accessed</h3>
+          <h3 class="heading-text mb-4 text-xl font-bold">Recently Accessed</h3>
           <RecentlyAccessed />
         </section>
       </div>
