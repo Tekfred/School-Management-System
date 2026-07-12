@@ -30,12 +30,6 @@ const menuSidebar = [
     path: '/app/finance',
     icon: 'account_balance_wallet',
   },
-  {
-    id: 5,
-    name: 'Settings',
-    path: '/app/settings',
-    icon: 'settings',
-  },
 ];
 </script>
 
