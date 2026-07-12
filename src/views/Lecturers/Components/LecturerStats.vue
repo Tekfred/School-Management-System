@@ -3,29 +3,40 @@ import { ref, onMounted } from 'vue'
 defineProps({ stats: Array })
 const root = ref(null)
 
+const iconColors = {
+  blue:   { bg: '#1D3461', text: '#60A5FA' },
+  green:  { bg: '#14362A', text: '#34D399' },
+  amber:  { bg: '#3D2C0A', text: '#E5BA73' },
+  purple: { bg: '#2D1B4E', text: '#A78BFA' },
+}
+
 onMounted(async () => {
   try {
     const gsap = window.gsap
-    const cards = root.value?.querySelectorAll('div > div')
-    if (cards && cards.length && gsap) gsap.from(cards, { y: 8, opacity: 0, duration: 0.45, stagger: 0.05, ease: 'power2.out' })
+    const cards = root.value?.querySelectorAll('.stat-card')
+    if (cards?.length && gsap)
+      gsap.from(cards, { y: 8, opacity: 0, duration: 0.45, stagger: 0.07, ease: 'power2.out' })
   } catch(e) {}
 })
 </script>
 
 <template>
-  <section ref="root" class="grid grid-cols-1 sm:grid-cols-4 gap-4">
-    <div v-for="s in stats" :key="s.id" class="rounded-xl bg-white p-4 shadow-md flex items-center gap-4">
-      <div class="w-12 h-12 rounded-lg flex items-center justify-center text-2xl bg-slate-100 text-[#181D31]">
+  <section ref="root" class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+    <div
+      v-for="s in stats"
+      :key="s.id"
+      class="flex items-center gap-4 px-5 py-5 stat-card surface-card interactive-surface rounded-2xl"
+    >
+      <div
+        class="flex items-center justify-center text-xl w-11 h-11 rounded-xl shrink-0"
+        :style="{ background: iconColors[s.color]?.bg, color: iconColors[s.color]?.text }"
+      >
         <span class="material-symbols-outlined">{{ s.icon }}</span>
       </div>
       <div>
-        <p class="text-sm text-slate-500">{{ s.title }}</p>
-        <p class="text-2xl font-bold">{{ s.value }}</p>
+        <p class="text-xs font-medium muted-text mb-0.5">{{ s.title }}</p>
+        <p class="text-2xl font-extrabold leading-none tracking-tight heading-text">{{ s.value }}</p>
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-:global(.dark) .rounded-xl { background: #0f172a; color: #e5e7eb }
-</style>

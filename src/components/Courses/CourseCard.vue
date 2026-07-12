@@ -14,7 +14,7 @@ onMounted(async () => {
 <template>
   <article ref="root" class="surface-card interactive-surface flex h-full flex-col p-4">
     <div class="flex items-center gap-3 mb-4">
-      <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-[var(--surface-border)] bg-[var(--surface-muted)] text-lg">📚</div>
+      <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-(--surface-border) bg-(--surface-muted) text-lg">📚</div>
       <div>
         <h4 class="heading-text font-bold">{{ course.title }}</h4>
         <p class="muted-text text-sm">{{ course.teacher }}</p>
