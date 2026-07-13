@@ -37,24 +37,24 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div ref="root" class="rounded-xl bg-white/6 p-6 backdrop-blur">
-    <h3 class="font-bold mb-4">Most Popular Courses</h3>
+  <div ref="root" class="surface-card p-6">
+    <h3 class="heading-text mb-4 font-bold">Most Popular Courses</h3>
     <div v-if="dataLoaded">
       <canvas ref="chartRef" />
     </div>
     <div v-else>
       <div class="flex flex-col gap-3">
         <div>
-          <div class="flex justify-between mb-1"><span>Computer Science</span><span>90</span></div>
-          <div class="h-2 bg-white/20 rounded-full"><div class="h-full bg-[#E5BA73]" style="width:90%"></div></div>
+          <div class="mb-1 flex justify-between text-sm"><span>Computer Science</span><span>90</span></div>
+          <div class="h-2 rounded-full bg-slate-200 dark:bg-slate-800"><div class="h-full rounded-full bg-[#E5BA73]" style="width:90%"></div></div>
         </div>
         <div>
-          <div class="flex justify-between mb-1"><span>Business</span><span>65</span></div>
-          <div class="h-2 bg-white/20 rounded-full"><div class="h-full bg-[#10b981]" style="width:65%"></div></div>
+          <div class="mb-1 flex justify-between text-sm"><span>Business</span><span>65</span></div>
+          <div class="h-2 rounded-full bg-slate-200 dark:bg-slate-800"><div class="h-full rounded-full bg-[#10b981]" style="width:65%"></div></div>
         </div>
         <div>
-          <div class="flex justify-between mb-1"><span>Mathematics</span><span>50</span></div>
-          <div class="h-2 bg-white/20 rounded-full"><div class="h-full bg-[#3b82f6]" style="width:50%"></div></div>
+          <div class="mb-1 flex justify-between text-sm"><span>Mathematics</span><span>50</span></div>
+          <div class="h-2 rounded-full bg-slate-200 dark:bg-slate-800"><div class="h-full rounded-full bg-[#3b82f6]" style="width:50%"></div></div>
         </div>
       </div>
     </div>

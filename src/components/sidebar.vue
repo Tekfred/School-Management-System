@@ -30,23 +30,17 @@ const menuSidebar = [
     path: '/app/finance',
     icon: 'account_balance_wallet',
   },
-  {
-    id: 5,
-    name: 'Settings',
-    path: '/app/settings',
-    icon: 'settings',
-  },
 ];
 </script>
 
 <template>
   <aside
-    class="hidden shrink-0 flex-col bg-[#181D31] text-white shadow-2xl shadow-[#181D31]/20 transition-all duration-300 ease-out lg:flex"
+    class="hidden shrink-0 flex-col border-r border-white/10 bg-[#0d1528] text-white shadow-2xl shadow-[#181D31]/20 transition-all duration-300 ease-out dark:bg-[#0b1222] lg:flex"
     :class="uiStore.isSidebarOpen ? 'w-72' : 'w-24'"
   >
     <div class="p-6">
       <div class="flex items-center gap-3" :class="uiStore.isSidebarOpen ? 'justify-between' : 'justify-center'">
-        <div class="flex min-w-0 items-center gap-3">
+        <div class="flex items-center min-w-0 gap-3">
           <div class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#E5BA73] text-[#181D31]">
             <span class="material-symbols-outlined">auto_stories</span>
           </div>
@@ -60,41 +54,41 @@ const menuSidebar = [
         <button
           type="button"
           @click="uiStore.toggleSidebar"
-          class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white/10 text-slate-300 transition hover:bg-white/15 hover:text-white"
+          class="grid transition border h-9 w-9 shrink-0 place-items-center rounded-xl border-white/10 bg-white/10 text-slate-300 hover:border-white/20 hover:bg-white/15 hover:text-white"
           :aria-label="uiStore.isSidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'"
         >
-          <span class="material-symbols-outlined text-xl transition-transform" :class="{ 'rotate-180': !uiStore.isSidebarOpen }">keyboard_double_arrow_left</span>
+          <span class="text-xl transition-transform material-symbols-outlined" :class="{ 'rotate-180': !uiStore.isSidebarOpen }">keyboard_double_arrow_left</span>
         </button>
       </div>
     </div>
 
-    <div v-if="uiStore.isSidebarOpen" class="mx-4 rounded-2xl border border-white/10 bg-white/10 p-4">
+    <div v-if="uiStore.isSidebarOpen" class="p-4 mx-4 border shadow-inner rounded-2xl border-white/10 bg-white/8 shadow-white/5">
       <p class="text-sm font-semibold text-slate-300">Level 5 Student</p>
-      <div class="mt-3 h-2 overflow-hidden rounded-full bg-white/10">
+      <div class="h-2 mt-3 overflow-hidden rounded-full bg-white/10">
         <div class="h-full w-[68%] rounded-full bg-[#E5BA73]"></div>
       </div>
-      <div class="mt-3 flex items-center justify-between text-xs font-semibold text-slate-300">
+      <div class="flex items-center justify-between mt-3 text-xs font-semibold text-slate-300">
         <span>Semester progress</span>
         <span>68%</span>
       </div>
     </div>
 
-    <div v-else class="mx-auto grid h-12 w-12 place-items-center rounded-2xl border border-white/10 bg-white/10 text-sm font-bold text-[#E5BA73]">
+    <div v-else class="mx-auto grid h-12 w-12 place-items-center rounded-2xl border border-white/10 bg-white/8 text-sm font-bold text-[#E5BA73]">
       68%
     </div>
 
-    <nav class="mt-6 flex-1 space-y-2" :class="uiStore.isSidebarOpen ? 'px-4' : 'px-3'">
+    <nav class="flex-1 mt-6 space-y-2" :class="uiStore.isSidebarOpen ? 'px-4' : 'px-3'">
       <router-link
         v-for="menu in menuSidebar"
         :key="menu.id"
         :to="menu.path"
-        class="group relative flex items-center rounded-2xl font-semibold text-slate-300 transition hover:bg-white/10 hover:text-white"
+        class="relative flex items-center font-semibold transition border border-transparent group rounded-2xl text-slate-300 hover:border-white/10 hover:bg-white/10 hover:text-white"
         :class="[
           uiStore.isSidebarOpen ? 'gap-3 px-4 py-3' : 'justify-center px-0 py-3',
           $route.path === menu.path ? 'bg-[#E5BA73] text-[#181D31] shadow-lg shadow-[#E5BA73]/20 hover:bg-[#E5BA73] hover:text-[#181D31]' : ''
         ]"
       >
-        <span class="material-symbols-outlined text-xl">{{ menu.icon }}</span>
+        <span class="text-xl material-symbols-outlined">{{ menu.icon }}</span>
         <span v-if="uiStore.isSidebarOpen">{{ menu.name }}</span>
         <span
           v-else

@@ -11,24 +11,24 @@ onMounted(async () => {
 </script>
 
 <template>
-  <section ref="root" class="rounded-2xl p-6 relative overflow-hidden" style="background: linear-gradient(135deg, rgba(24,29,49,0.9), rgba(30,41,59,0.85));">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+  <section ref="root" class="relative overflow-hidden rounded-2xl border border-white/10 bg-[linear-gradient(135deg,#181D31,rgba(24,29,49,0.96)_48%,rgba(229,186,115,0.18))] p-6 text-white shadow-[0_22px_55px_rgba(24,29,49,0.22)] dark:border-[#E5BA73]/15 dark:shadow-black/30">
+    <div class="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <div>
         <p class="text-sm uppercase tracking-wider text-[#E5BA73]">Learning Hub</p>
         <h1 class="text-3xl font-bold mt-2">Discover, manage and track academic journeys.</h1>
         <p class="mt-2 text-sm text-slate-200/80">Explore knowledge across every department.</p>
       </div>
 
-      <div class="flex gap-4">
-        <div class="rounded-xl bg-white/6 p-4 text-center backdrop-blur">
+      <div class="grid grid-cols-3 gap-3">
+        <div class="rounded-xl border border-white/10 bg-white/10 p-4 text-center backdrop-blur">
           <p class="text-xs text-slate-200">Active Courses</p>
           <p class="text-xl font-bold">42</p>
         </div>
-        <div class="rounded-xl bg-white/6 p-4 text-center backdrop-blur">
+        <div class="rounded-xl border border-white/10 bg-white/10 p-4 text-center backdrop-blur">
           <p class="text-xs text-slate-200">Students Enrolled</p>
           <p class="text-xl font-bold">1250</p>
         </div>
-        <div class="rounded-xl bg-white/6 p-4 text-center backdrop-blur">
+        <div class="rounded-xl border border-white/10 bg-white/10 p-4 text-center backdrop-blur">
           <p class="text-xs text-slate-200">Completion Rate</p>
           <p class="text-xl font-bold">94%</p>
         </div>
@@ -36,7 +36,7 @@ onMounted(async () => {
     </div>
 
     <!-- Decorative background image (use your asset if present) -->
-    <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('/src/assets/library.jpg'); background-size: cover; background-position: center; mix-blend-mode: overlay;"></div>
+    <div class="pointer-events-none absolute inset-0 opacity-10" style="background-image: url('/src/assets/library.jpg'); background-size: cover; background-position: center; mix-blend-mode: overlay;"></div>
   </section>
 </template>
 
