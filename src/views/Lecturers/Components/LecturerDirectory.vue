@@ -5,7 +5,8 @@ const root = ref(null)
 
 const statusStyle = (status) => {
   if (status === 'Available') return { bg: '#14362A', text: '#34D399', dot: '#34D399' }
-  if (status === 'In Class')  return { bg: '#1D3461', text: '#60A5FA', dot: '#60A5FA' }
+  if (status === 'In Class') return { bg: '#1D3461', text: '#60A5FA', dot: '#60A5FA' }
+  
   return                             { bg: '#2A2A2A', text: '#9CA3AF', dot: '#6B7280' }
 }
 
