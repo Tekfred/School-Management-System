@@ -54,7 +54,7 @@ export const quickActions = [
     icon: 'upload_file',
     bgColor: 'bg-blue-50',
     textColor: 'text-blue-600',
-    route: '/app/dashboard',
+    route: '/app/submit-work',
   },
   {
     id: 2,
@@ -63,7 +63,7 @@ export const quickActions = [
     icon: 'bar_chart',
     bgHex: '#ecfdf5',
     textHex: '#059669',
-    route: '/app/dashboard',
+    route: '/app/view-results',
   },
   {
     id: 3,
