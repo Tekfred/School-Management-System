@@ -39,7 +39,7 @@ onMounted(async () => {
 
 <template>
   <div class="min-h-full text-(--heading) dark:bg-(--app-bg) dark:text-(--body-text)">
-    <section class="dashboard-section px-5 py-6 sm:px-8">
+    <section class="dashboard-section px-4 py-5 sm:px-6 lg:px-8">
       <div class="grid gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
         <div class="overflow-hidden rounded-2xl bg-[#181D31] text-white shadow-xl shadow-slate-200/70 dark:shadow-black/20">
           <div class="relative grid gap-8 p-6 sm:p-8 lg:grid-cols-[minmax(0,1fr)_320px]">
@@ -118,7 +118,7 @@ onMounted(async () => {
       </div>
     </section>
 
-    <section ref="gridRef" class="metrics-grid dashboard-section grid grid-cols-1 gap-5 px-5 sm:px-8 md:grid-cols-2 xl:grid-cols-4">
+    <section ref="gridRef" class="metrics-grid dashboard-section grid grid-cols-1 gap-5 px-4 sm:px-6 lg:px-8 md:grid-cols-2 xl:grid-cols-4">
       <div
         v-for="active in activeStatus"
         :key="active.id"
@@ -136,7 +136,7 @@ onMounted(async () => {
       </div>
     </section>
 
-    <section class="dashboard-section grid grid-cols-1 gap-6 px-5 py-6 sm:px-8 xl:grid-cols-[minmax(0,1fr)_360px]">
+    <section class="dashboard-section grid grid-cols-1 gap-6 px-4 py-5 sm:px-6 lg:px-8 xl:grid-cols-[minmax(0,1fr)_360px]">
       <div class="space-y-6">
         <div class="surface-card rounded-3xl p-6">
           <div class="flex items-center justify-between mb-5">

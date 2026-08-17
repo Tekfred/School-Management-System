@@ -21,11 +21,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <section ref="root" class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+  <section ref="root" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
     <div
       v-for="s in stats"
       :key="s.id"
-      class="flex items-center gap-4 px-5 py-5 stat-card surface-card interactive-surface rounded-2xl"
+      class="flex items-center gap-3 sm:gap-4 px-4 py-4 sm:px-5 sm:py-5 stat-card surface-card interactive-surface rounded-2xl"
     >
       <div
         class="flex items-center justify-center text-xl w-11 h-11 rounded-xl shrink-0"

@@ -8,6 +8,7 @@ const navItems = [
   { label: 'Courses',   icon: 'menu_book',              to: '/app/students'  },
   { label: 'Lecturers', icon: 'school',                 to: '/app/teachers'  },
   { label: 'Fees',      icon: 'account_balance_wallet', to: '/app/finance'   },
+  { label: 'Settings',  icon: 'settings',               to: '/app/settings'  },
 ]
 
 const isActive = (item) => route.path === item.to
@@ -20,14 +21,15 @@ const iconStyle = (item) => ({
 </script>
 
 <template>
-  <nav class="fixed bottom-0 z-50 bg-transparent left-4 right-4 b lg:hidden">
-    <div class="nav-pill flex items-center justify-around px-2 py-2 rounded-[28px]">
+  <!-- bottom-4 for breathing room above iOS home indicator -->
+  <nav class="fixed z-50 bottom-4 left-3 right-3 lg:hidden">
+    <div class="nav-pill flex items-center justify-around px-1 py-2 rounded-[28px]">
 
-      <RouterLink 
+      <RouterLink
         v-for="item in navItems"
         :key="item.to"
         :to="item.to"
-        class="nav-item relative flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-2xl transition-all duration-200 no-underline"
+        class="nav-item relative flex flex-col items-center gap-0.5 px-2.5 py-1.5 rounded-2xl transition-all duration-200 no-underline min-w-13"
       >
         <!-- Active glow pill -->
         <span v-if="isActive(item)" class="absolute inset-0 rounded-2xl bg-[#E5BA73]/15"></span>
@@ -60,6 +62,12 @@ const iconStyle = (item) => ({
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
+}
+
+/* Minimum 44px touch target height for accessibility */
+.nav-item {
+  min-height: 44px;
+  justify-content: center;
 }
 
 .nav-item:active {

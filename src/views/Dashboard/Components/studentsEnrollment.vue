@@ -64,7 +64,7 @@ const getBarHeight = (students) => {
       </select>
     </div>
 
-      <div class="flex h-56 items-end justify-around gap-3 rounded-2xl border border-(--surface-border) bg-(--surface-muted) p-4">
+      <div class="flex h-48 sm:h-56 items-end justify-around gap-3 rounded-2xl border border-(--surface-border) bg-(--surface-muted) p-4">
         <div
           v-for="(data, index) in enrollmentRecords"
           :key="index"
@@ -88,7 +88,7 @@ const getBarHeight = (students) => {
       </div>
     </div>
 
-     <div class="mt-6 grid grid-cols-3 gap-4">
+     <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
        <div class="rounded-xl bg-(--surface-muted) p-3">
          <p class="text-xs muted-text">Total Growth</p>
          <p class="text-lg font-black heading-text" style="color: #34D358">{{ totalGrowth }}%</p>
