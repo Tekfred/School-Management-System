@@ -1,8 +1,9 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-const router = useRouter()
 
-defineProps({
+const router = useRouter()
+const props = defineProps({
   actions: {
     type: Array,
     default: () => [],
@@ -11,23 +12,34 @@ defineProps({
 
 function handleAction(action) {
   if (action.route) {
-    // navigate to a route; if route doesn't exist yet, this will fail in runtime — used as example
     router.push(action.route)
   } else {
     console.log('Quick action clicked:', action.name)
   }
 }
 
+onMounted(async () => {
+  try {
+    const gsap = window.gsap
+    if (gsap) {
+      gsap.from('.qa-header', { y: 12, opacity: 0, duration: 0.5, ease: 'power3.out' })
+      gsap.from('.qa-card', {
+        y: 16, opacity: 0, duration: 0.45,
+        stagger: 0.08, ease: 'power2.out', delay: 0.2,
+      })
+    }
+  } catch (e) {}
+})
 </script>
 
 <template>
-  <div class="rounded-2xl bg-white/90 p-5 shadow-xl shadow-slate-200/70 dark:bg-[#0f172a] dark:shadow-black/20">
-    <div class="mb-4 flex items-center justify-between">
+  <div class="surface-card rounded-3xl p-6 shadow-xl shadow-slate-200/70 dark:shadow-black/20">
+    <div class="qa-header flex items-center justify-between mb-5">
       <div>
-        <h3 class="text-lg font-bold text-[#181D31] dark:text-white">Quick Actions</h3>
-        <p class="text-sm text-slate-500 dark:text-slate-400">Frequent student tasks</p>
+        <h3 class="text-lg font-bold heading-text">Quick Actions</h3>
+        <p class="text-sm muted-text mt-0.5">Frequent student tasks</p>
       </div>
-      <span class="material-symbols-outlined rounded-xl bg-[#E5BA73]/20 p-2 text-[#b8860b]">bolt</span>
+      <span class="material-symbols-outlined rounded-xl bg-(--accent)/20 p-2 text-(--accent)">bolt</span>
     </div>
 
     <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-1">
@@ -37,50 +49,39 @@ function handleAction(action) {
         @click="handleAction(action)"
         role="button"
         tabindex="0"
-        class="group rounded-xl p-4 text-left cursor-pointer transition hover:-translate-y-0.5 hover:shadow-md dark:ring-1 dark:ring-white/10"
-        :class="['animate-pop-in', action.bgColor ? action.bgColor : '']"
-        :style="{
-          ...(action.bgHex ? { backgroundColor: action.bgHex } : {}),
-          animationDelay: `${(action.id - 1) * 0.15}s`
-        }"
+        class="qa-card interactive-surface surface-card rounded-2xl p-4 cursor-pointer transition-all duration-200 group"
+        :style="{ animationDelay: `${(action.id - 1) * 0.1}s` }"
       >
         <div class="flex items-center gap-3">
-          <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-white/70 shadow-sm">
+          <div
+            class="flex items-center justify-center shadow-sm h-11 w-11 rounded-xl transition-all duration-200 group-hover:scale-110"
+            :class="action.bgColor || ''"
+            :style="{
+              backgroundColor: action.bgHex || undefined,
+              color: action.textHex || undefined,
+            }"
+          >
             <span
-              :class="['material-symbols-outlined', action.textColor ? action.textColor : '']"
-              :style="action.textHex ? { color: action.textHex } : null"
-              class="text-2xl"
+              class="material-symbols-outlined text-2xl"
+              :class="action.textColor || ''"
+              :style="action.textHex ? { color: action.textHex } : undefined"
             >
               {{ action.icon }}
             </span>
           </div>
-          <div class="min-w-0">
-            <div :style="action.textHex ? { color: action.textHex } : null" class="font-bold">{{ action.name }}</div>
-            <div class="text-xs font-semibold text-[#181D31]">{{ action.description }}</div>
+          <div class="min-w-0 flex-1">
+            <div class="font-bold heading-text">{{ action.name }}</div>
+            <div class="text-xs muted-text">{{ action.description }}</div>
           </div>
-          <span class="material-symbols-outlined ml-auto text-lg text-[#181D31] opacity-0 transition group-hover:opacity-60">arrow_forward</span>
+          <span
+            class="material-symbols-outlined text-lg opacity-0 text-(--subtle-text) transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-1"
+          >arrow_forward</span
+          >
         </div>
       </div>
     </div>
   </div>
 </template>
 
-
 <style scoped>
-@keyframes popIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9) translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-.animate-pop-in {
-  animation: popIn 0.45s ease-out forwards;
-  opacity: 0;
-}
-
 </style>

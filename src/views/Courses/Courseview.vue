@@ -1,38 +1,52 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 import CourseHero from '@/components/Courses/CourseHero.vue'
 import CourseFilter from '@/components/Courses/CourseFilter.vue'
 import FeaturedCourse from '@/components/Courses/FeaturedCourse.vue'
 import CourseCard from '@/components/Courses/CourseCard.vue'
 import RecentlyAccessed from '@/components/Courses/RecentlyAccessed.vue'
 import { courses } from '@/views/Courses/coursesData'
+
+const root = ref(null)
+
+onMounted(async () => {
+  try {
+    const gsap = window.gsap
+    if (gsap) {
+      gsap.from('.course-section', {
+        y: 12, opacity: 0, duration: 0.45, stagger: 0.1, ease: 'power2.out',
+      })
+    }
+  } catch (e) {}
+})
 </script>
 
 <template>
-  <div class="app-page p-6">
+  <div ref="root" class="app-page p-6">
     <CourseHero />
 
-    <div class="mt-6">
+    <div class="course-section mt-6">
       <CourseFilter />
     </div>
 
-    <div class="mt-6">
+    <div class="course-section mt-6">
       <FeaturedCourse />
     </div>
 
-    <section class="mt-6">
-      <h3 class="heading-text mb-4 text-lg font-bold">Course Grid</h3>
+    <section class="course-section mt-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-bold heading-text">Course Grid</h3>
+      </div>
       <div class="grid gap-4 md:grid-cols-3">
         <CourseCard v-for="c in courses" :key="c.id" :course="c" />
       </div>
     </section>
 
-    <section class="mt-8">
-      <h3 class="heading-text mb-4 text-lg font-bold">Recently Accessed</h3>
+    <section class="course-section mt-8">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-bold heading-text">Recently Accessed</h3>
+      </div>
       <RecentlyAccessed />
     </section>
   </div>
 </template>
-
-<style scoped>
-/* Layout styles retained minimal; components have their own visuals */
-</style>

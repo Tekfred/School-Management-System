@@ -14,14 +14,14 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div ref="root" class="flex flex-col gap-4">
-    <div class="surface-panel flex items-center gap-3 p-3">
-      <input v-model="search" placeholder="Search courses..." class="h-11 flex-1 rounded-xl border border-(--surface-border) bg-(--surface-muted) px-4 text-(--heading) outline-none transition placeholder:text-slate-400 focus:border-[#E5BA73] focus:ring-4 focus:ring-[#E5BA73]/20" />
-      <button class="interactive-surface rounded-xl border border-(--surface-border) bg-(--surface-muted) px-4 py-2 font-semibold text-(--heading)">Filters</button>
+  <div ref="root" class="course-filter flex flex-col gap-4">
+    <div class="surface-panel flex items-center gap-3 p-3 rounded-2xl">
+      <input v-model="search" placeholder="Search courses..." class="h-11 flex-1 rounded-xl border border-(--surface-border) bg-(--surface-muted) px-4 text-(--heading) outline-none transition placeholder:text-slate-400 focus:border-(--accent) focus:ring-4 focus:ring-(--accent)/20" />
+      <button class="interactive-surface rounded-xl border border-(--surface-border) bg-(--surface-muted) px-4 py-2 font-semibold text-(--heading) hover:text-(--accent) transition-colors">Filters</button>
     </div>
 
     <div class="flex gap-2 flex-wrap">
-      <button v-for="c in categories" :key="c" @click="active = c" :class="['interactive-surface rounded-full border px-3 py-1 text-sm font-bold transition', active === c ? 'border-[#E5BA73] bg-[#E5BA73] text-[#181D31] shadow-lg shadow-[#E5BA73]/20' : 'border-(--surface-border) bg-(--surface) text-(--body-text) hover:text-(--heading)']">{{ c }}</button>
+      <button v-for="c in categories" :key="c" @click="active = c" :class="['interactive-surface rounded-full border px-4 py-1.5 text-sm font-bold transition-all duration-200', active === c ? 'border-(--accent) bg-(--accent) text-(--navy) shadow-lg shadow-(--accent)/20' : 'border-(--surface-border) bg-(--surface) text-(--body-text) hover:text-(--heading)']">{{ c }}</button>
     </div>
   </div>
 </template>

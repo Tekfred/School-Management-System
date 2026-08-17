@@ -27,13 +27,13 @@ onMounted(async () => {
         class="avail-row p-3.5 rounded-xl bg-(--surface-muted) border border-(--surface-border)"
       >
         <p class="mb-2 text-sm font-bold body-text">{{ a.name }}</p>
-        <div class="flex flex-wrap gap-1.5">
-          <span
-            v-for="slot in a.slots"
-            :key="slot"
-            class="text-xs font-semibold px-3 py-1 rounded-full bg-[#3D2C0A] text-(--accent) border border-[rgba(229,186,115,0.25)] tracking-wide"
-          >{{ slot }}</span>
-        </div>
+            <div class="flex flex-wrap gap-1.5">
+            <span
+              v-for="slot in a.slots"
+              :key="slot"
+              class="text-xs font-semibold px-3 py-1 rounded-full bg-(--accent)/10 text-(--accent-strong) border border-(--accent)/20 tracking-wide"
+            >{{ slot }}</span>
+          </div>
       </div>
     </div>
 
