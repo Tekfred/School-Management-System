@@ -12,6 +12,7 @@ const twitLink = ref('https://twitter.com/i/flow/login');
 
 const userEmail = ref('');
 const password = ref('');
+const showPassword = ref(false);
 
 const toastMessage = ref('');
 const toastType = ref('success');
@@ -92,30 +93,30 @@ const handleLogin = () => {
   <main class="min-h-screen bg-(--background) text-(--text)">
     <div class="grid min-h-screen lg:grid-cols-[minmax(0,1.08fr)_minmax(420px,0.92fr)]">
       <section class="relative hidden overflow-hidden lg:block">
-        <img src="/bg-uni1.jpg" alt="Sunlit university library" class="absolute inset-0 h-full w-full object-cover">
+        <img src="/bg-uni1.jpg" alt="Sunlit university library" class="absolute inset-0 object-cover w-full h-full">
         <div class="absolute inset-0 bg-linear-to-br from-[#181D31]/65 via-[#181D31]/25 to-[#E5BA73]/20"></div>
         <div class="particles" aria-hidden="true">
           <span v-for="item in 14" :key="item" :style="{ '--delay': `${item * 0.35}s`, '--left': `${8 + item * 6}%` }"></span>
         </div>
 
-        <div class="relative z-10 flex min-h-screen flex-col justify-between p-10 xl:p-14">
-          <div class="logo flex items-center gap-4">
+        <div class="relative z-10 flex flex-col justify-between min-h-screen p-10 xl:p-14">
+          <div class="flex items-center gap-4 logo">
             <div class="grid h-12 w-12 place-items-center rounded-2xl bg-(--gold) text-(--navy) shadow-xl">
               <span class="material-symbols-outlined">auto_stories</span>
             </div>
             <div>
-              <p class="display-font text-4xl font-bold text-white">{{ SystemName }}</p>
+              <p class="text-4xl font-bold text-white display-font">{{ SystemName }}</p>
               <p class="text-xs font-bold uppercase tracking-[0.24em] text-[#F7E5C8]">Campus Experience</p>
             </div>
           </div>
 
           <div class="max-w-2xl">
             <p class="hero-copy text-sm font-bold uppercase tracking-[0.28em] text-[#F7E5C8]">Learning Environment</p>
-            <h1 class="hero-copy mt-4 text-6xl font-bold leading-none text-white xl:text-7xl">
+            <h1 class="mt-4 text-6xl font-bold leading-none text-white hero-copy xl:text-7xl">
               Learning Never Exhausts The Mind
             </h1>
-            <p class="hero-copy mt-5 text-lg font-medium text-white/80">- Leonardo da Vinci</p>
-            <p class="hero-copy mt-6 max-w-xl text-base leading-7 text-white/75">
+            <p class="mt-5 text-lg font-medium hero-copy text-white/80">- Leonardo da Vinci</p>
+            <p class="max-w-xl mt-6 text-base leading-7 hero-copy text-white/75">
               Warm spaces, calm progress, and every academic tool in one premium student dashboard.
             </p>
           </div>
@@ -129,9 +130,9 @@ const handleLogin = () => {
         </div>
       </section>
 
-      <section class="flex min-h-screen items-center justify-center px-5 py-10 sm:px-8">
+      <section class="flex items-center justify-center min-h-screen px-5 py-10 sm:px-8">
         <div class="w-full max-w-md">
-          <div class="logo mb-8 flex items-center gap-4 lg:hidden">
+          <div class="flex items-center gap-4 mb-8 logo lg:hidden">
             <div class="grid h-12 w-12 place-items-center rounded-2xl bg-(--gold) text-(--navy) shadow-xl">
               <span class="material-symbols-outlined">auto_stories</span>
             </div>
@@ -153,22 +154,22 @@ const handleLogin = () => {
               </p>
             </div>
 
-            <div class="mt-7 grid grid-cols-3 gap-3">
+            <div class="grid grid-cols-3 gap-3 mt-7">
               <a :href="appleLink" class="grid h-12 place-items-center rounded-2xl bg-(--navy) shadow-sm ring-1 ring-(--gold)/50 transition hover:-translate-y-0.5 hover:shadow-md">
-                <img :src="apple" class="h-6 w-6 object-contain" alt="Apple">
+                <img :src="apple" class="object-contain w-6 h-6" alt="Apple">
               </a>
               <a :href="googleLink" class="grid h-12 place-items-center rounded-2xl bg-(--navy) shadow-sm ring-1 ring-(--gold)/50 transition hover:-translate-y-0.5 hover:shadow-md">
-                <img :src="google" class="h-6 w-6 object-contain" alt="Google">
+                <img :src="google" class="object-contain w-6 h-6" alt="Google">
               </a>
               <a :href="twitLink" class="grid h-12 place-items-center rounded-2xl bg-(--navy) shadow-sm ring-1 ring-(--gold)/50 transition hover:-translate-y-0.5 hover:shadow-md">
-                <img :src="twit" class="h-7 w-7 object-contain invert" alt="X">
+                <img :src="twit" class="object-contain h-7 w-7 invert" alt="X">
               </a>
             </div>
 
-            <div class="my-7 flex items-center gap-4">
-              <span class="h-px flex-1 bg-slate-200"></span>
+            <div class="flex items-center gap-4 my-7">
+              <span class="flex-1 h-px bg-slate-200"></span>
               <span class="text-xs font-bold uppercase tracking-[0.18em] text-(--muted)">or use student ID</span>
-              <span class="h-px flex-1 bg-slate-200"></span>
+              <span class="flex-1 h-px bg-slate-200"></span>
             </div>
 
             <div class="space-y-5">
@@ -184,17 +185,28 @@ const handleLogin = () => {
 
               <label class="block">
                 <span class="text-sm font-bold text-(--text)">Password</span>
-                <input
-                  v-model="password"
-                  type="password"
-                  required
-                  class="mt-2 h-13 w-full rounded-2xl border border-slate-200 bg-white/85 px-4 text-(--navy) outline-none transition placeholder:text-slate-400 focus:border-(--gold) focus:ring-4 focus:ring-[#E5BA73]/20"
-                  placeholder="Enter password"
-                >
+                <div class="relative mt-2">
+                  <input
+                    v-model="password"
+                    :type="showPassword ? 'text' : 'password'"
+                    required
+                    class="h-13 w-full rounded-2xl border border-slate-200 bg-white/85 px-4 pr-12 text-(--navy) outline-none transition placeholder:text-slate-400 focus:border-(--gold) focus:ring-4 focus:ring-[#E5BA73]/20"
+                    placeholder="Enter password"
+                  >
+                  <button
+                    type="button"
+                    @click="showPassword = !showPassword"
+                    class="absolute inset-y-0 right-0 flex items-center justify-center w-12 text-(--muted) hover:text-(--gold) transition-colors"
+                    :aria-label="showPassword ? 'Hide password' : 'Show password'"
+                  >
+                    <span v-if="showPassword" class="text-xl  material-symbols-outlined">visibility_off</span>
+                    <span v-else class="text-xl material-symbols-outlined">visibility</span>
+                  </button>
+                </div>
               </label>
             </div>
 
-            <div class="mt-4 flex items-center justify-between text-sm font-semibold">
+            <div class="flex items-center justify-between mt-4 text-sm font-semibold">
               <a href="#" class="text-(--muted) transition hover:text-[#b8860b]">Forgot OTP?</a>
               <a href="#" class="text-[#b8860b] transition hover:text-(--navy)">Register</a>
             </div>
@@ -204,7 +216,7 @@ const handleLogin = () => {
               class="mt-8 flex h-13 w-full items-center justify-center gap-2 rounded-2xl bg-(--gold) font-extrabold text-(--navy) shadow-[0_18px_35px_rgba(229,186,115,.35)] transition hover:-translate-y-0.5 hover:shadow-[0_22px_40px_rgba(229,186,115,.42)]"
             >
               <span>Login to Dashboard</span>
-              <span class="material-symbols-outlined text-xl">arrow_forward</span>
+              <span class="text-xl material-symbols-outlined">arrow_forward</span>
             </button>
           </form>
 
@@ -217,7 +229,7 @@ const handleLogin = () => {
 
     <div
       v-if="showToast"
-      class="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-2xl px-6 py-3 text-sm font-bold shadow-xl transition-all duration-300"
+      class="fixed z-50 px-6 py-3 text-sm font-bold transition-all duration-300 -translate-x-1/2 shadow-xl bottom-6 left-1/2 rounded-2xl"
       :class="toastType === 'success' ? 'bg-(--navy) text-white' : 'bg-red-600 text-white'"
     >
       {{ toastMessage }}
