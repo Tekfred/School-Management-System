@@ -25,7 +25,7 @@ const closeDropdown = () => {
 </script>
 
 <template>
-  <header class="sticky top-0 z-40 border-b border-(--surface-border) bg-white/88 shadow-[0_10px_30px_rgba(24,29,49,0.05)] backdrop-blur-xl dark:bg-[#050816]/88 dark:shadow-black/20">
+  <header class="sticky top-0 z-40 border-b border-(--surface-border) bg-(--surface)/88 shadow-[0_10px_30px_rgba(24,29,49,0.05)] backdrop-blur-xl dark:bg-(--app-bg-soft)/88 dark:shadow-black/20">>
     <div class="flex flex-col gap-4 px-5 py-4 sm:px-8 lg:flex-row lg:items-center lg:justify-between">
       <div>
         <p class="accent-text text-xs font-bold uppercase tracking-[0.18em]">School Overview</p>
@@ -49,14 +49,14 @@ const closeDropdown = () => {
             class="flex items-center gap-1 rounded-full border border-(--surface-border) bg-(--surface-muted) p-1 text-slate-500 transition hover:border-(--surface-border-strong) hover:bg-white dark:hover:bg-[#111827]"
             :aria-label="themeStore.isDark ? 'Switch to light mode' : 'Switch to dark mode'"
           >
-            <span
-              class="p-1 text-xl transition rounded-full material-symbols-outlined"
-              :class="themeStore.isDark ? 'text-slate-500' : 'bg-white text-amber-500 shadow-sm'"
-            >light_mode</span>
-            <span
-              class="p-1 text-xl transition rounded-full material-symbols-outlined"
-              :class="themeStore.isDark ? 'bg-[#E5BA73] text-[#181D31] shadow-sm' : 'text-slate-400'"
-            >dark_mode</span>
+          <span
+            class="p-1 text-xl transition rounded-full material-symbols-outlined"
+            :class="themeStore.isDark ? 'text-slate-500' : 'bg-(--surface) text-(--accent) shadow-sm'"
+          >light_mode</span>
+          <span
+            class="p-1 text-xl transition rounded-full material-symbols-outlined"
+            :class="themeStore.isDark ? 'bg-(--accent) text-(--navy) shadow-sm' : 'text-slate-400'"
+          >dark_mode</span>
           </button>
 
           <button class="relative grid h-11 w-11 place-items-center rounded-full border border-(--surface-border) bg-(--surface-muted) text-slate-600 transition hover:border-(--surface-border-strong) hover:bg-white dark:text-slate-300 dark:hover:bg-[#111827]" aria-label="Notifications">

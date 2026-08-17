@@ -11,24 +11,30 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div ref="root" class="surface-card interactive-surface overflow-hidden p-6">
-    <h3 class="heading-text mb-2 text-2xl font-bold">Computer Science 101</h3>
+  <div ref="root" class="surface-card interactive-surface overflow-hidden p-6" style="border-radius: 1.25rem">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="material-symbols-outlined text-2xl text-(--accent)">star</span>
+      <h3 class="heading-text text-2xl font-bold">Computer Science 101</h3>
+    </div>
     <p class="muted-text mb-4 text-sm">A foundational course introducing algorithms, data structures and problem solving.</p>
-    <div class="grid grid-cols-3 gap-4 mb-4">
+    <div class="grid grid-cols-3 gap-4 mb-5">
       <div>
-        <p class="muted-text text-xs">Students</p>
-        <p class="heading-text font-bold">320</p>
+        <p class="text-xs muted-text uppercase tracking-wider">Students</p>
+        <p class="text-xl font-black heading-text">320</p>
       </div>
       <div>
-        <p class="muted-text text-xs">Modules</p>
-        <p class="heading-text font-bold">8</p>
+        <p class="text-xs muted-text uppercase tracking-wider">Modules</p>
+        <p class="text-xl font-black heading-text">8</p>
       </div>
       <div>
-        <p class="muted-text text-xs">Completion</p>
-        <p class="heading-text font-bold">92%</p>
+        <p class="text-xs muted-text uppercase tracking-wider">Completion</p>
+        <p class="text-xl font-black heading-text">92%</p>
       </div>
     </div>
-    <button class="primary-action rounded-full px-5 py-2 font-semibold">Explore Course</button>
+    <button class="primary-action rounded-full px-6 py-2.5 font-semibold flex items-center gap-2">
+      <span class="material-symbols-outlined text-sm">play_arrow</span>
+      Explore Course
+    </button>
   </div>
 </template>
 

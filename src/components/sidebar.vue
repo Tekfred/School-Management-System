@@ -35,19 +35,19 @@ const menuSidebar = [
 
 <template>
   <aside
-    class="hidden shrink-0 flex-col border-r border-white/10 bg-[#0d1528] text-white shadow-2xl shadow-[#181D31]/20 transition-all duration-300 ease-out dark:bg-[#0b1222] lg:flex"
+    class="hidden shrink-0 flex-col border-r bg-(--navy) text-white shadow-2xl transition-all duration-300 ease-out dark:bg-[#0b1222] lg:flex"
     :class="uiStore.isSidebarOpen ? 'w-72' : 'w-24'"
   >
     <div class="p-6">
       <div class="flex items-center gap-3" :class="uiStore.isSidebarOpen ? 'justify-between' : 'justify-center'">
         <div class="flex items-center min-w-0 gap-3">
-          <div class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#E5BA73] text-[#181D31]">
+          <div class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-(--accent) text-(--navy)">
             <span class="material-symbols-outlined">auto_stories</span>
           </div>
 
           <div v-if="uiStore.isSidebarOpen" class="min-w-0">
             <p class="text-2xl font-bold text-white">{{ name1 }}</p>
-            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#E5BA73]">Campus OS</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-(--accent)">Campus OS</p>
           </div>
         </div>
 
@@ -65,7 +65,7 @@ const menuSidebar = [
     <div v-if="uiStore.isSidebarOpen" class="p-4 mx-4 border shadow-inner rounded-2xl border-white/10 bg-white/8 shadow-white/5">
       <p class="text-sm font-semibold text-slate-300">Level 5 Student</p>
       <div class="h-2 mt-3 overflow-hidden rounded-full bg-white/10">
-        <div class="h-full w-[68%] rounded-full bg-[#E5BA73]"></div>
+        <div class="h-full w-[68%] rounded-full bg-(--accent)"></div>
       </div>
       <div class="flex items-center justify-between mt-3 text-xs font-semibold text-slate-300">
         <span>Semester progress</span>
@@ -73,7 +73,7 @@ const menuSidebar = [
       </div>
     </div>
 
-    <div v-else class="mx-auto grid h-12 w-12 place-items-center rounded-2xl border border-white/10 bg-white/8 text-sm font-bold text-[#E5BA73]">
+    <div v-else class="mx-auto grid h-12 w-12 place-items-center rounded-2xl border border-white/10 bg-white/8 text-sm font-bold text-(--accent)">
       68%
     </div>
 
@@ -85,7 +85,7 @@ const menuSidebar = [
         class="relative flex items-center font-semibold transition border border-transparent group rounded-2xl text-slate-300 hover:border-white/10 hover:bg-white/10 hover:text-white"
         :class="[
           uiStore.isSidebarOpen ? 'gap-3 px-4 py-3' : 'justify-center px-0 py-3',
-          $route.path === menu.path ? 'bg-[#E5BA73] text-[#181D31] shadow-lg shadow-[#E5BA73]/20 hover:bg-[#E5BA73] hover:text-[#181D31]' : ''
+          $route.path === menu.path ? 'bg-(--accent) text-(--navy) shadow-lg' : ''
         ]"
       >
         <span class="text-xl material-symbols-outlined">{{ menu.icon }}</span>

@@ -49,6 +49,16 @@ const router = createRouter({
             path: 'settings',
             name: 'settings',
             component: Settingsview
+          },
+          {
+            path: 'submit-work',
+            name: 'submit-work',
+            component: () => import('../views/Assignments/SubmitWork.vue')
+          },
+          {
+            path: 'view-results',
+            name: 'view-results',
+            component: () => import('../views/Assignments/ViewResults.vue')
           }
         ]
     }
