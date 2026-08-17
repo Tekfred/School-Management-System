@@ -17,7 +17,7 @@ onMounted(async () => {
       <h3 class="heading-text text-2xl font-bold">Computer Science 101</h3>
     </div>
     <p class="muted-text mb-4 text-sm">A foundational course introducing algorithms, data structures and problem solving.</p>
-    <div class="grid grid-cols-3 gap-4 mb-5">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
       <div>
         <p class="text-xs muted-text uppercase tracking-wider">Students</p>
         <p class="text-xl font-black heading-text">320</p>

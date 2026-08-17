@@ -62,7 +62,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="min-h-full px-5 py-6 sm:px-8">
+  <div class="min-h-full px-4 py-5 sm:px-6 lg:px-8">
     <!-- Header -->
     <header class="sw-header flex items-center justify-between mb-6 flex-wrap gap-3">
       <div class="flex items-center gap-3">
@@ -134,14 +134,14 @@ onMounted(async () => {
           <div class="flex items-center justify-end gap-3 pt-4 border-t border-(--surface-border)">
             <button
               @click="goBack"
-              class="px-5 py-2 text-sm font-semibold rounded-xl border border-(--surface-border) muted-text hover:bg-(--surface-border) transition-all"
+              class="px-5 py-2.5 text-sm font-semibold rounded-xl border border-(--surface-border) muted-text hover:bg-(--surface-border) transition-all"
             >
               Cancel
             </button>
             <button
               @click="submitWork"
               :disabled="!selectedFile"
-              class="primary-action inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold shadow-lg hover:shadow-xl transition-all"
+              class="primary-action inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold shadow-lg hover:shadow-xl transition-all"
               :class="{ 'opacity-50 cursor-not-allowed': !selectedFile }"
             >
               <span class="material-symbols-outlined text-base">send</span>

@@ -27,7 +27,7 @@ onMounted(async () => {
         <p class="mt-2 text-sm muted-text">Explore knowledge across every department.</p>
       </div>
 
-      <div class="grid grid-cols-3 gap-3">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <div class="hero-stat text-center rounded-xl border border-(--surface-border) bg-(--surface-muted) px-4 py-3">
           <p class="text-xs muted-text font-semibold uppercase tracking-wider">Active Courses</p>
           <p class="text-2xl font-black mt-1 heading-text">42</p>

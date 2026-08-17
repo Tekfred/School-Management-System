@@ -50,24 +50,24 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="min-h-full px-5 py-6 sm:px-8">
+  <div class="min-h-full px-4 py-5 sm:px-6 lg:px-8">
     <!-- Header -->
-    <header class="vr-header flex items-center justify-between mb-6 flex-wrap gap-3">
+    <header class="vr-header flex items-center justify-between mb-5 sm:mb-6 flex-wrap gap-3">
       <div class="flex items-center gap-3">
         <button
           @click="goBack"
-          class="flex items-center justify-center h-9 w-9 rounded-xl bg-(--surface-muted) border border-(--surface-border) muted-text hover:bg-(--surface-border) transition-all"
+          class="flex items-center justify-center h-10 w-10 rounded-xl bg-(--surface-muted) border border-(--surface-border) muted-text hover:bg-(--surface-border) transition-all"
         >
           <span class="material-symbols-outlined text-base">arrow_back</span>
         </button>
         <div>
           <p class="text-xs font-bold uppercase tracking-[0.18em] text-(--accent) mb-1">Academics</p>
-          <h1 class="text-2xl font-black heading-text">View Results</h1>
+          <h1 class="text-2xl font-black heading-text" style="font-family: 'Cormorant Garamond', Georgia, serif">View Results</h1>
         </div>
       </div>
       <button
         @click="goBack"
-        class="primary-action inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold shadow-lg hover:shadow-xl transition-all"
+        class="primary-action inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold shadow-lg hover:shadow-xl transition-all"
       >
         <span class="material-symbols-outlined text-base">dashboard</span>
         Back to Dashboard
@@ -83,7 +83,7 @@ onMounted(async () => {
           { label: 'Highest Grade', value: 'A', icon: 'emoji_events', color: 'text-emerald-600 dark:text-emerald-400' }
         ]"
         :key="stat.label"
-        class="vr-summary surface-card rounded-2xl p-5 text-center"
+        class="vr-summary surface-card rounded-2xl p-4 sm:p-5 text-center"
       >
         <span class="material-symbols-outlined text-2xl mb-2" :class="stat.color">{{ stat.icon }}</span>
         <p class="text-2xl font-black heading-text">{{ stat.value }}</p>

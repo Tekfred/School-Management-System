@@ -18,7 +18,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div ref="root" class="min-h-full p-6 space-y-6">
+  <div ref="root" class="min-h-full p-4 md:p-6 space-y-5 md:space-y-6">
 
     <!-- Page Header -->
     <header class="pt-4 pb-2">

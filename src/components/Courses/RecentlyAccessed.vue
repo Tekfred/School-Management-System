@@ -16,7 +16,7 @@ onMounted(async () => {
     <div
       v-for="i in items"
       :key="i"
-      class="min-w-50 surface-card rounded-2xl p-4 interactive-surface"
+      class="min-w-44 sm:min-w-50 surface-card rounded-2xl p-4 interactive-surface"
     >
       <div class="h-32 rounded-xl bg-(--surface-muted) mb-3"></div>
       <h4 class="font-black heading-text text-lg">Course title</h4>

@@ -14,7 +14,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <article ref="root" class="surface-card interactive-surface flex h-full flex-col p-4 rounded-2xl">
+  <article ref="root" class="surface-card interactive-surface flex h-full flex-col p-4 md:p-5 rounded-2xl">
     <div class="flex items-center gap-3 mb-4">
       <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-(--surface-border) bg-(--surface-muted) text-lg text-(--accent)">
         <span class="material-symbols-outlined">{{ course.icon || 'menu_book' }}</span>

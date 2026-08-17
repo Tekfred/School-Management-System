@@ -21,7 +21,7 @@ onMounted(async () => {
     </div>
 
     <div class="flex gap-2 flex-wrap">
-      <button v-for="c in categories" :key="c" @click="active = c" :class="['interactive-surface rounded-full border px-4 py-1.5 text-sm font-bold transition-all duration-200', active === c ? 'border-(--accent) bg-(--accent) text-(--navy) shadow-lg shadow-(--accent)/20' : 'border-(--surface-border) bg-(--surface) text-(--body-text) hover:text-(--heading)']">{{ c }}</button>
+      <button v-for="c in categories" :key="c" @click="active = c" :class="['interactive-surface rounded-full border px-4 py-2 text-sm font-bold transition-all duration-200', active === c ? 'border-(--accent) bg-(--accent) text-(--navy) shadow-lg shadow-(--accent)/20' : 'border-(--surface-border) bg-(--surface) text-(--body-text) hover:text-(--heading)']">{{ c }}</button>
     </div>
   </div>
 </template>

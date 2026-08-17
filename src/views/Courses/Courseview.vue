@@ -22,7 +22,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div ref="root" class="app-page p-6">
+  <div ref="root" class="app-page p-4 md:p-6 lg:p-7">
     <CourseHero />
 
     <div class="course-section mt-6">
@@ -37,7 +37,7 @@ onMounted(async () => {
       <div class="flex items-center justify-between mb-4">
         <h3 class="text-lg font-bold heading-text">Course Grid</h3>
       </div>
-      <div class="grid gap-4 md:grid-cols-3">
+      <div class="grid gap-4 md:gap-5 md:grid-cols-2 lg:grid-cols-3">
         <CourseCard v-for="c in courses" :key="c.id" :course="c" />
       </div>
     </section>
