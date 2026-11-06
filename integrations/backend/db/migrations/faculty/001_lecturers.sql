@@ -1,0 +1,15 @@
+CREATE SCHEMA IF NOT EXISTS faculty;
+CREATE TABLE IF NOT EXISTS faculty.lecturers (
+  id BIGINT PRIMARY KEY, name TEXT NOT NULL, department TEXT NOT NULL,
+  course_count INTEGER NOT NULL DEFAULT 0, rating NUMERIC(2,1) NOT NULL DEFAULT 0,
+  status TEXT NOT NULL DEFAULT 'Available', is_active BOOLEAN NOT NULL DEFAULT TRUE
+);
+
+CREATE TABLE IF NOT EXISTS faculty.top_performers (
+  lecturer_id BIGINT PRIMARY KEY REFERENCES faculty.lecturers(id) ON DELETE CASCADE,
+  score INTEGER NOT NULL CHECK (score BETWEEN 0 AND 100)
+);
+CREATE TABLE IF NOT EXISTS faculty.upcoming_lectures (
+  id BIGSERIAL PRIMARY KEY, lecturer_id BIGINT NOT NULL REFERENCES faculty.lecturers(id) ON DELETE CASCADE,
+  title TEXT NOT NULL, starts_at TIMESTAMPTZ NOT NULL
+);

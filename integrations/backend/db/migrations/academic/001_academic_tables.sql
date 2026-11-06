@@ -1,0 +1,18 @@
+CREATE SCHEMA IF NOT EXISTS academic;
+CREATE TABLE IF NOT EXISTS academic.courses (
+  id BIGINT PRIMARY KEY, title TEXT NOT NULL, teacher TEXT NOT NULL,
+  student_count INTEGER NOT NULL DEFAULT 0,
+  progress INTEGER NOT NULL DEFAULT 0 CHECK (progress BETWEEN 0 AND 100),
+  modules INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, icon TEXT,
+  is_active BOOLEAN NOT NULL DEFAULT TRUE
+);
+CREATE TABLE IF NOT EXISTS academic.student_activities (
+  id BIGSERIAL PRIMARY KEY,
+  student_id BIGINT NOT NULL REFERENCES core.students(id) ON DELETE CASCADE,
+  icon_text TEXT NOT NULL, title TEXT NOT NULL, message TEXT NOT NULL DEFAULT '',
+  detail TEXT NOT NULL DEFAULT '', occurred_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+CREATE TABLE IF NOT EXISTS academic.campus_events (
+  id BIGSERIAL PRIMARY KEY, title TEXT NOT NULL,
+  starts_at TIMESTAMPTZ NOT NULL, location TEXT
+);

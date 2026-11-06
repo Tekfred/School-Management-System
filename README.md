@@ -1,5 +1,22 @@
-# Vue 3 + Vite
+# EduSuite Student Portal
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A React 19 school management portal built with Vite, React Router, Tailwind CSS, and React Icons.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Development
+
+```sh
+npm install
+npm run dev
+```
+
+## Backend integrations
+
+The React app uses the existing mock data by default. See [integrations/README.md](integrations/README.md) for the Express REST API, PostgreSQL schema/migrations, WebSocket client/server, and the steps to switch screens from mock data to live API data.
+
+## Build
+
+```sh
+npm run build
+```
+
+The demo login uses student ID `admins` and password `!!qwertyk3y`.

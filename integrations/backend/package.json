@@ -1,0 +1,23 @@
+{
+  "name": "edusuite-backend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/dev.js --watch",
+    "start": "node src/dev.js",
+    "start:gateway": "node src/server.js",
+    "start:identity": "node src/features/identity/server.js",
+    "start:academic": "node src/features/academic/server.js",
+    "start:faculty": "node src/features/faculty/server.js",
+    "start:finance": "node src/features/finance/server.js",
+    "db:migrate": "node src/db/migrate.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^18.0.9",
+    "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "ws": "^8.18.3"
+  }
+}
