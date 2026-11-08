@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useGsap } from "../../hooks/useGsap.js";
 import {
   FiCreditCard,
   FiDownload,
@@ -29,9 +30,13 @@ export default function FinancialView() {
   const [amount, setAmount] = useState(feesData.summary.outstanding);
   const [method, setMethod] = useState("Mobile Money");
   const [toast, setToast] = useState("");
+  const ringRef = useRef(null);
+  const modalRef = useRef(null);
   const s = data.summary;
   useEffect(() => setAmount(s.outstanding), [s.outstanding]);
   const paid = Math.round((s.totalPaid / s.totalFees) * 100);
+  useGsap(ringRef, (gsap, ring) => gsap.fromTo(ring, { strokeDashoffset: 603 }, { strokeDashoffset: 603 * (1 - paid / 100), duration: 0.95, delay: 0.18, ease: "power3.out" }), [paid]);
+  useGsap(modalRef, (gsap, modal) => gsap.fromTo(modal, { y: 24, autoAlpha: 0, scale: 0.98 }, { y: 0, autoAlpha: 1, scale: 1, duration: 0.32, ease: "power3.out" }), [payOpen]);
   const pay = async () => {
     try {
       if (!integrationConfig.isMock) await createPayment({ amount: Number(amount), method });
@@ -96,6 +101,7 @@ export default function FinancialView() {
                     stroke="#E5BA73"
                     strokeWidth="14"
                     strokeLinecap="round"
+                    ref={ringRef}
                     strokeDasharray={603}
                     strokeDashoffset={603 * (1 - paid / 100)}
                   />
@@ -244,6 +250,7 @@ export default function FinancialView() {
           onMouseDown={(e) => e.target === e.currentTarget && setPayOpen(false)}
         >
           <section
+            ref={modalRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby="payment-title"

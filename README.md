@@ -1,6 +1,6 @@
 # EduSuite Student Portal
 
-A React 19 school management portal built with Vite, React Router, Tailwind CSS, and React Icons.
+A React 19 school management portal built with Vite, React Router, Tailwind CSS, React Icons, and GSAP.
 
 ## Development
 

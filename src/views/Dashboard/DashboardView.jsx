@@ -45,7 +45,7 @@ export default function DashboardView() {
       <IntegrationStatus loading={resource.loading} error={resource.error} />
       <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
         <div className="space-y-6">
-          <div className="overflow-hidden rounded-2xl bg-[#181D31] text-white shadow-xl">
+          <div data-animate="hero" className="overflow-hidden rounded-2xl bg-[#181D31] text-white shadow-xl">
             <div className="p-6 sm:p-8">
               <p className="text-sm font-semibold uppercase tracking-[.18em] text-[#E5BA73]">
                 Student portal

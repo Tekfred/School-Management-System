@@ -42,7 +42,7 @@ export default function LecturersView() {
             {(data.list || []).map((l) => (
               <div
                 key={l.id}
-                className="flex gap-4 rounded-2xl border border-(--surface-border) p-4"
+                className="interactive-surface flex gap-4 rounded-2xl border border-(--surface-border) p-4"
               >
                 <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[#181D31] text-lg font-bold text-[#E5BA73]">
                   {l.name.split(" ").slice(-1)[0][0]}

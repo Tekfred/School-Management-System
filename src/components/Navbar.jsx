@@ -1,16 +1,15 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useGsap } from "../hooks/useGsap.js";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   FiBell,
   FiChevronDown,
   FiLogOut,
-  FiMoon,
   FiSearch,
   FiSettings,
-  FiSun,
   FiUser,
 } from "react-icons/fi";
-import { useTheme } from "../contexts/ThemeContext.jsx";
+import ThemeToggle from "./ThemeToggle.jsx";
 import profile from "../assets/images/profile_img_3.png";
 const titles = {
   "/app/dashboard": "Student Command Center",
@@ -23,7 +22,10 @@ const titles = {
 };
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const { isDark, toggleTheme } = useTheme();
+  const menuRef = useRef(null);
+  useGsap(menuRef, (gsap, menu) => {
+    gsap.fromTo(menu, { y: -8, autoAlpha: 0, scale: 0.98 }, { y: 0, autoAlpha: 1, scale: 1, duration: 0.2, ease: "power2.out" });
+  }, [open]);
   const location = useLocation();
   const navigate = useNavigate();
   const logout = () => {
@@ -49,13 +51,7 @@ export default function Navbar() {
               placeholder="Search courses, assignments..."
             />
           </label>
-          <button
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-            className="grid h-10 w-10 place-items-center rounded-full border border-(--surface-border) bg-(--surface-muted)"
-          >
-            {isDark ? <FiSun /> : <FiMoon />}
-          </button>
+          <ThemeToggle />
           <button
             aria-label="Notifications"
             className="relative grid h-10 w-10 place-items-center rounded-full border border-(--surface-border) bg-(--surface-muted)"
@@ -80,7 +76,7 @@ export default function Navbar() {
               <FiChevronDown className="text-slate-400" />
             </button>
             {open && (
-              <div className="absolute right-0 z-50 mt-2 w-52 overflow-hidden rounded-2xl border border-(--surface-border) bg-(--surface-strong) shadow-xl">
+              <div ref={menuRef} className="absolute right-0 z-50 mt-2 w-52 overflow-hidden rounded-2xl border border-(--surface-border) bg-(--surface-strong) shadow-xl">
                 <button className="flex w-full items-center gap-3 px-4 py-3 text-sm hover:bg-(--surface-muted)">
                   <FiUser /> Student Profile
                 </button>
