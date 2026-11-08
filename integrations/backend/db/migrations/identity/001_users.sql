@@ -1,0 +1,9 @@
+CREATE SCHEMA IF NOT EXISTS identity;
+CREATE TABLE IF NOT EXISTS identity.users (
+  id BIGSERIAL PRIMARY KEY,
+  student_id BIGINT UNIQUE REFERENCES core.students(id) ON DELETE CASCADE,
+  email TEXT NOT NULL UNIQUE,
+  password_hash TEXT NOT NULL,
+  role TEXT NOT NULL DEFAULT 'student',
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
