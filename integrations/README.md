@@ -22,7 +22,7 @@ The gateway lets the UI keep one `VITE_API_BASE_URL`, while feature services can
 | --- | --- | --- |
 | Shared student records | `core` | `students` |
 | Sign in and accounts | `identity` | `users` |
-| Courses and dashboard | `academic` | `courses`, `student_activities`, `campus_events` |
+| Courses and dashboard | `academic` | `courses`, `student_courses`, `student_activities`, `momentum_months`, `student_achievements`, `campus_feed`, `campus_events` |
 | Lecturers | `faculty` | `lecturers` |
 | Fees and payments | `finance` | `fee_accounts`, `fee_items`, `payments` |
 
@@ -77,7 +77,7 @@ To add a backend feature, create its folder under `src/features`, add an app, ro
 | --- | --- | --- | --- |
 | GET | `/api/v1/health` | Gateway | Per-service and database health |
 | POST | `/api/v1/auth/login` | Identity | Authentication integration point |
-| GET | `/api/v1/dashboard` | Academic | Student summary, activity, events |
+| GET | `/api/v1/dashboard` | Academic | Student summary, stats, courses, momentum, achievements, campus feed, activity, events |
 | GET | `/api/v1/courses` | Academic | Active course list |
 | GET | `/api/v1/lecturers` | Faculty | Lecturer summary and directory |
 | GET | `/api/v1/finance/overview` | Finance | Fee account, breakdown, receipts, upcoming items |

@@ -137,7 +137,7 @@ export const upcomingEvents = [
   {
     id: 1,
     Events: 'Database Systems quiz',
-    Timeline: 'Jun 4, 2026',
+    Timeline: 'Nov 11, 2026',
     border: 'border-blue-500',
     dot: 'bg-blue-100',
     Time: '10:00 AM',
@@ -145,7 +145,7 @@ export const upcomingEvents = [
   {
     id: 2,
     Events: 'Software Engineering demo',
-    Timeline: 'Jun 7, 2026',
+    Timeline: 'Nov 14, 2026',
     border: 'border-green-500',
     dot: 'bg-green-100',
     Time: '2:00 PM',
@@ -153,7 +153,7 @@ export const upcomingEvents = [
   {
     id: 3,
     Events: 'Tuition payment deadline',
-    Timeline: 'Jun 10, 2026',
+    Timeline: 'Nov 18, 2026',
     border: 'border-red-500',
     dot: 'bg-red-100',
     Time: '11:59 PM',
@@ -161,7 +161,7 @@ export const upcomingEvents = [
   {
     id: 4,
     Events: 'AI Club Hack Night',
-    Timeline: 'Jun 14, 2026',
+    Timeline: 'Nov 21, 2026',
     border: 'border-amber-500',
     dot: 'bg-amber-100',
     Time: '6:30 PM',
@@ -207,8 +207,8 @@ export const achievements = [
 
 export const campusFeed = [
   { id: 1, label: 'Announcement', title: 'Mid-semester results are now available', time: 'Today' },
-  { id: 2, label: 'Internship', title: 'Frontend trainee role opened at DevWorks', time: 'Jun 3' },
-  { id: 3, label: 'Competition', title: 'Register for the campus hackathon', time: 'Jun 8' },
+  { id: 2, label: 'Internship', title: 'Frontend trainee role opened at DevWorks', time: 'Nov 10' },
+  { id: 3, label: 'Competition', title: 'Register for the campus hackathon', time: 'Nov 12' },
 ]
 
 export const studentProgress = {
